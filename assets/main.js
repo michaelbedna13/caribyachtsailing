@@ -37,8 +37,8 @@ document.querySelectorAll('[data-carousel]').forEach(function(c){
     raf=0;
     var mid=track.scrollLeft+half, lo=nearest(mid)-3, hi=lo+6;
     for(var i=Math.max(0,lo);i<=Math.min(cards.length-1,hi);i++){
-      var k=Math.min(Math.abs(centers[i]-mid)/st,1), el=cards[i];
-      el.style.setProperty('--s',(1-.14*k).toFixed(3)); el.style.setProperty('--o',(1-.45*k).toFixed(3)); el.style.setProperty('--t',Math.max(0,1-1.5*k).toFixed(3));
+      var k=Math.min(Math.abs(centers[i]-mid)/st,1), el=cards[i], sm=window.innerWidth<700;
+      el.style.setProperty('--s',(1-(sm?.07:.14)*k).toFixed(3)); el.style.setProperty('--o',(1-(sm?.3:.45)*k).toFixed(3)); el.style.setProperty('--t',Math.max(0,1-1.5*k).toFixed(3));
     }
     var best=nearest(mid);
     if(best!==active){
@@ -50,7 +50,7 @@ document.querySelectorAll('[data-carousel]').forEach(function(c){
     }
   }
   function queue(){ if(!raf) raf=requestAnimationFrame(render); }
-  function initAll(){ cards.forEach(function(el){el.style.setProperty('--s','.86');el.style.setProperty('--o','.55');el.style.setProperty('--t','0');}); }
+  function initAll(){ var sm=window.innerWidth<700; cards.forEach(function(el){el.style.setProperty('--s',sm?'.93':'.86');el.style.setProperty('--o',sm?'.7':'.55');el.style.setProperty('--t','0');}); }
   // Nepozorovaný skok do prostřední sady karet
   function recenter(){
     var i=nearest(track.scrollLeft+half);

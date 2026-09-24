@@ -806,3 +806,26 @@ body{overflow-x:clip}
   .cap-body p{font-size:16px}
   .panel{padding:28px}
 }
+
+/* ===== v14: mobilní úpravy ===== */
+/* Ukázkový program: tři sloupce jen na desktopu */
+.process.p3{grid-template-columns:repeat(3,1fr);row-gap:56px}
+@media (max-width:900px){.process.p3{grid-template-columns:1fr 1fr;row-gap:40px}}
+@media (max-width:560px){
+  .process,.process.p3{grid-template-columns:1fr;gap:0}
+  .process li{display:grid;grid-template-columns:52px 1fr;column-gap:12px;padding:22px 0}
+  .process li::before{grid-row:span 2;margin:0;font-size:30px}
+  .process h4{font-size:13px;letter-spacing:.14em;line-height:1.5}
+  .process p{margin-top:6px}
+}
+
+/* Řádky se štítkem vpravo: na mobilu popisek pod názvem, zarovnaný vlevo */
+@media (max-width:900px){.rows li span{align-self:flex-start;text-align:left}}
+
+/* Kolotoč na mobilu: sousední karty víc vykukují, ať je jasné, že se dá posouvat */
+@media (max-width:640px){
+  .carousel{--cw:66vw;--gap:14px}
+  .car-track .dcard .img{aspect-ratio:4/4.4}
+  .car-track .dcard h3{font-size:clamp(28px,8vw,36px)}
+  .car-track .dcard p{font-size:16px}
+}
