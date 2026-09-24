@@ -1,23 +1,27 @@
 # Přesměrování adres ze starého webu (301 zachová pozice ve vyhledávání)
-# Adresy označené OVĚŘIT je potřeba zkontrolovat proti starému webu nebo Google Search Console
+# Netlify přesměrování neuplatní, pokud na adrese existuje soubor, takže nové stránky mají přednost.
+# Řádky pod komentářem OVĚŘIT je potřeba zkontrolovat proti starému webu nebo Google Search Console.
 
-/sluzby/                        /jak-to-funguje/            301
-/teambuilding-na-jachte/        /pro-firmy/                 301
-/plavby-v-tureckych-vodach/     /destinace/turecko/         301
-# OVĚŘIT, zda stará adresa existovala:
-/plavba-po-karibskem-mori/      /destinace/karibik/         301
-/fendr/                         /jak-to-funguje/#slovnik    301
-# OVĚŘIT, zda stará adresa existovala:
-/bezan/			/jak-to-funguje/#slovnik    301
-# OVĚŘIT, zda stará adresa existovala:
-/bermudsky-yawl/			/jak-to-funguje/#slovnik    301
-# OVĚŘIT, zda stará adresa existovala:
-/bermudsky-slup/			/jak-to-funguje/#slovnik    301
-/tagy/*                         /                           301
-/2014/*                         /                           301
-/2016/*                         /                           301
-/2017/*                         /                           301
-/2018/*                         /                           301
-/2019/*                         /                           301
-/2020/*                         /                           301
-/2022/*                         /                           301
+/sluzby/                                 /jak-to-funguje/                        301
+/teambuilding-na-jachte/                 /pro-firmy/                             301
+/plavby-v-tureckych-vodach/              /destinace/stredomori/turecko/          301
+/norsko/                                 /destinace/severni-more/norsko/         301
+/destinace/stredomori/*                  /destinace/stredomori/                  301
+/destinace/severni-more/*                /destinace/severni-more/                301
+/destinace/karibik/*                     /destinace/karibik/                     301
+/fendr/                                  /jak-to-funguje/#slovnik                301
+# OVĚŘIT, zda staré adresy existovaly:
+/karibske-ostrovy/                       /destinace/karibik/navetrne-ostrovy/    301
+/plavba-po-karibskem-mori/               /destinace/karibik/                     301
+/bezan/                                  /jak-to-funguje/#slovnik                301
+/bermudsky-yawl/                         /jak-to-funguje/#slovnik                301
+/bermudsky-slup/                         /jak-to-funguje/#slovnik                301
+/tagy/*                                  /                                       301
+/2014/*                                  /                                       301
+/2015/*                                  /                                       301
+/2016/*                                  /                                       301
+/2017/*                                  /                                       301
+/2018/*                                  /                                       301
+/2019/*                                  /                                       301
+/2020/*                                  /                                       301
+/2022/*                                  /                                       301

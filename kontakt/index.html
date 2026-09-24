@@ -16,7 +16,7 @@
 <meta name="theme-color" content="#0B1621">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400&family=Jost:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/styles.css">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "TravelAgency", "name": "Carib Yacht Sailing, s.r.o.", "url": "https://caribyacht.cz/", "telephone": "+420737168072", "email": "info@caribyacht.cz", "foundingDate": "2008", "founder": {"@type": "Person", "name": "Ing. Pavel Strašil"}, "address": {"@type": "PostalAddress", "streetAddress": "Šeříková 32", "addressLocality": "Brno-Jundrov", "postalCode": "637 00", "addressCountry": "CZ"}, "areaServed": "Worldwide", "description": "Soukromé a firemní plavby s vlastními kapitány."}</script>
 </head>
@@ -24,12 +24,11 @@
 <a class="skip" href="#obsah">Přeskočit na obsah</a>
 <header class="header" id="header">
   <div class="wrap header-inner">
-    <nav class="nav" aria-label="Hlavní navigace"><a href="../destinace/">Destinace</a><a href="../pro-firmy/">Pro firmy</a><a href="../kapitani/">Kapitáni</a><a href="../jak-to-funguje/">Jak to funguje</a></nav>
-    <button class="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Otevřít menu"><span></span></button>
     <a class="logo" href="../" aria-label="Carib Yacht Sailing, úvodní stránka"><span class="l1">Carib Yacht</span><span class="l2">Sailing</span></a>
+    <nav class="nav" aria-label="Hlavní navigace"><a href="../destinace/">Destinace</a><a href="../pro-firmy/">Pro firmy</a><a href="../kapitani/">Kapitáni</a><a href="../jak-to-funguje/">Jak to funguje</a><a href="../kontakt/" aria-current="page">Kontakt</a></nav>
     <div class="header-right">
-      <a class="tel" href="tel:+420737168072">+420 737 168 072</a>
-      <a class="btn" href="../kontakt/">Poptávka</a>
+      <a class="btn" href="../kontakt/">Poptat plavbu</a>
+      <button class="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Otevřít menu"><span></span></button>
     </div>
   </div>
 </header>
@@ -45,31 +44,31 @@
     
   </div>
 </section>
-<section class="section dark"><div class="wrap contact">
-  <div>
+<section class="section ivory"><div class="wrap contact">
+  <div class="contact-info">
     <span class="kicker">Poptávka</span>
     <h2>Napište nám, kam byste chtěli</h2>
-    <p class="lead">Ozveme se s návrhem trasy, lodi a ceny. Raději voláte? Kapitáni berou telefon osobně.</p>
-    <div class="people">
-      <div><span>Pavel Strašil</span><a href="tel:+420737168072">+420 737 168 072</a></div>
-      <div><span>Lukáš Strašil</span><a href="tel:+420773611801">+420 773 611 801</a></div>
-      <div><span>E-mail</span><a href="mailto:info@caribyacht.cz">info@caribyacht.cz</a></div>
-      <div><span>Sídlo</span><address>Carib Yacht Sailing, s.r.o.<br>Šeříková 32, 637 00 Brno-Jundrov</address></div>
-    </div>
+    <p class="lead">Stačí pár řádků. Ozveme se s návrhem trasy, lodi a ceny. Raději voláte? Zavolejte přímo kapitánům.</p>
+    <dl class="people">
+      <div><dt>Pavel Strašil</dt><dd><a href="tel:+420737168072">+420 737 168 072</a></dd></div>
+      <div><dt>Lukáš Strašil</dt><dd><a href="tel:+420773611801">+420 773 611 801</a></dd></div>
+      <div><dt>E-mail</dt><dd><a href="mailto:info@caribyacht.cz">info@caribyacht.cz</a></dd></div>
+      <div><dt>Sídlo</dt><dd><address>Carib Yacht Sailing, s.r.o.<br>Šeříková 32, 637 00 Brno-Jundrov</address></dd></div>
+    </dl>
   </div>
   <!-- Netlify Forms: po nasazení na Netlify začnou poptávky chodit do administrace a na e-mail -->
-  <form class="form" name="poptavka" method="POST" action="../dekujeme/" data-netlify="true" netlify-honeypot="bot-field">
+  <form class="form-card" name="poptavka" method="POST" action="../dekujeme/" data-netlify="true" netlify-honeypot="bot-field">
     <input type="hidden" name="form-name" value="poptavka">
     <p class="hp"><label>Nevyplňujte <input name="bot-field"></label></p>
-    <fieldset class="full"><legend>Mám zájem o</legend><div class="opts"><input type="radio" name="typ" id="t0" value="Soukromá plavba" data-key="soukroma" checked><label for="t0">Soukromou plavbu</label><input type="radio" name="typ" id="t1" value="Firemní plavba" data-key="firemni"><label for="t1">Firemní plavbu</label><input type="radio" name="typ" id="t2" value="Kapitánský kurz" data-key="kurz"><label for="t2">Kurz</label><input type="radio" name="typ" id="t3" value="Pronájem lodi" data-key="pronajem"><label for="t3">Pronájem</label></div></fieldset>
-    <div><label for="f1">Jméno</label><input id="f1" name="jmeno" autocomplete="name" required></div>
-    <div><label for="f2">E-mail</label><input id="f2" name="email" type="email" autocomplete="email" required></div>
-    <div><label for="f6">Telefon</label><input id="f6" name="telefon" type="tel" autocomplete="tel"></div>
-    <div><label for="f3">Termín</label><input id="f3" name="termin" placeholder="Např. červen"></div>
-    <div class="full"><label for="f4">Počet hostů</label><input id="f4" name="osob" type="number" min="1" inputmode="numeric"></div>
-    <div class="full"><label for="f5">Vaše představa</label><textarea id="f5" name="zprava" placeholder="Destinace, zkušenosti, děti na palubě"></textarea></div>
-    <div class="full"><button class="btn btn-brass" type="submit">Odeslat poptávku</button></div>
-    <p class="note full">Údaje použijeme pouze k odpovědi na vaši poptávku.</p>
+    <fieldset class="full"><legend>O co máte zájem?</legend><div class="tiles"><div class="tile"><input type="radio" name="typ" id="t0" value="Soukromá plavba" data-key="soukroma" checked><label for="t0"><strong>Soukromá plavba</strong><span>S rodinou nebo přáteli</span></label></div><div class="tile"><input type="radio" name="typ" id="t1" value="Firemní plavba" data-key="firemni"><label for="t1"><strong>Firemní plavba</strong><span>Teambuilding, regata, akce pro klienty</span></label></div><div class="tile"><input type="radio" name="typ" id="t2" value="Kapitánský kurz" data-key="kurz"><label for="t2"><strong>Kapitánský kurz</strong><span>Příprava na kapitánské zkoušky</span></label></div><div class="tile"><input type="radio" name="typ" id="t3" value="Pronájem lodi" data-key="pronajem"><label for="t3"><strong>Pronájem lodi</strong><span>Bez kapitána nebo ve flotile</span></label></div></div></fieldset>
+    <div class="field"><label for="f1">Jméno a příjmení <span class="req" aria-hidden="true">*</span></label><input id="f1" name="jmeno" autocomplete="name" required></div>
+    <div class="field"><label for="f2">E-mail <span class="req" aria-hidden="true">*</span></label><input id="f2" name="email" type="email" autocomplete="email" required></div>
+    <div class="field"><label for="f6">Telefon</label><input id="f6" name="telefon" type="tel" autocomplete="tel"></div>
+    <div class="field"><label for="f7">Destinace</label><input id="f7" name="destinace" placeholder="Např. Turecko, nebo zatím nevím"></div>
+    <div class="field"><label for="f3">Kdy byste chtěli vyplout?</label><input id="f3" name="termin" placeholder="Např. druhá polovina června"></div>
+    <div class="field"><label for="f4">Počet hostů</label><input id="f4" name="osob" type="number" min="1" inputmode="numeric" placeholder="Např. 6"></div>
+    <div class="field full"><label for="f5">Cokoli dalšího</label><textarea id="f5" name="zprava" placeholder="Zkušenosti s jachtingem, děti na palubě, vaše představa o plavbě"></textarea></div>
+    <div class="submit full"><button class="btn btn-solid" type="submit">Odeslat poptávku</button><p class="note">Pole s hvězdičkou jsou povinná. Údaje použijeme jen k odpovědi na vaši poptávku.</p></div>
   </form>
 </div></section>
 </main>
@@ -80,7 +79,7 @@
         <a class="logo" href="../"><span class="l1">Carib Yacht</span><span class="l2">Sailing</span></a>
         <p class="about">Soukromé a firemní plavby s vlastními kapitány. Rodinná jachtařská tradice od roku 1974.</p>
       </div>
-      <div><h4>Destinace</h4><ul><li><a href="../destinace/turecko/">Turecko</a></li><li><a href="../destinace/chorvatsko/">Chorvatsko</a></li><li><a href="../destinace/karibik/">Karibik</a></li><li><a href="../destinace/">Plavby na míru</a></li></ul></div>
+      <div><h4>Destinace</h4><ul><li><a href="../destinace/stredomori/">Středomoří</a></li><li><a href="../destinace/severni-more/">Severní moře</a></li><li><a href="../destinace/karibik/">Karibik</a></li><li><a href="../destinace/vzdalena-more/">Vzdálená moře</a></li></ul></div>
       <div><h4>Informace</h4><ul><li><a href="../pro-firmy/">Pro firmy</a></li><li><a href="../kapitani/">Kapitáni</a></li><li><a href="../jak-to-funguje/">Jak to funguje</a></li><li><a href="../jak-to-funguje/#slovnik">Jachtařský slovník</a></li></ul></div>
       <div><h4>Kontakt</h4><ul><li><a href="tel:+420737168072">+420 737 168 072</a></li><li><a href="mailto:info@caribyacht.cz">info@caribyacht.cz</a></li><li><address>Šeříková 32<br>637 00 Brno-Jundrov</address></li></ul></div>
     </div>

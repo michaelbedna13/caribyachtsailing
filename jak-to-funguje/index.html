@@ -16,7 +16,7 @@
 <meta name="theme-color" content="#0B1621">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400..600;1,6..96,400&family=Jost:wght@400;500&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="../assets/styles.css">
 <script type="application/ld+json">{"@context": "https://schema.org", "@type": "FAQPage", "mainEntity": [{"@type": "Question", "name": "Potřebuji zkušenosti s jachtingem?", "acceptedAnswer": {"@type": "Answer", "text": "Ne. Loď řídí kapitán. Pokud budete chtít, naučí vás pracovat s plachtami i kormidlem. Pokud ne, můžete jen odpočívat."}}, {"@type": "Question", "name": "Co když mi bude na moři nevolno?", "acceptedAnswer": {"@type": "Answer", "text": "Trasu plánujeme podle počasí a hodně času trávíme v klidných zátokách. Citlivějším hostům doporučujeme katamarán, který se nenaklání."}}, {"@type": "Question", "name": "Je plavba vhodná pro děti?", "acceptedAnswer": {"@type": "Answer", "text": "Ano. Napište nám věk dětí a přizpůsobíme loď i trasu."}}, {"@type": "Question", "name": "Kde se na lodi spí?", "acceptedAnswer": {"@type": "Answer", "text": "V kajutách, obvykle dvoulůžkových. Na lodi je společný salon, plně vybavená kuchyně a koupelny. Přesná dispozice záleží na lodi."}}, {"@type": "Question", "name": "Kdo vaří?", "acceptedAnswer": {"@type": "Answer", "text": "Na lodi je plně vybavená kuchyně, snídaně a obědy se obvykle připravují na palubě. Večer často vyrážíme do přístavních restaurací."}}, {"@type": "Question", "name": "Jak se dostanu k lodi?", "acceptedAnswer": {"@type": "Answer", "text": "Letecky na nejbližší letiště a odtud transferem do maríny, do Chorvatska i autem. S dopravou rádi poradíme."}}]}</script>
 </head>
@@ -24,12 +24,11 @@
 <a class="skip" href="#obsah">Přeskočit na obsah</a>
 <header class="header" id="header">
   <div class="wrap header-inner">
-    <nav class="nav" aria-label="Hlavní navigace"><a href="../destinace/">Destinace</a><a href="../pro-firmy/">Pro firmy</a><a href="../kapitani/">Kapitáni</a><a href="../jak-to-funguje/" aria-current="page">Jak to funguje</a></nav>
-    <button class="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Otevřít menu"><span></span></button>
     <a class="logo" href="../" aria-label="Carib Yacht Sailing, úvodní stránka"><span class="l1">Carib Yacht</span><span class="l2">Sailing</span></a>
+    <nav class="nav" aria-label="Hlavní navigace"><a href="../destinace/">Destinace</a><a href="../pro-firmy/">Pro firmy</a><a href="../kapitani/">Kapitáni</a><a href="../jak-to-funguje/" aria-current="page">Jak to funguje</a><a href="../kontakt/">Kontakt</a></nav>
     <div class="header-right">
-      <a class="tel" href="tel:+420737168072">+420 737 168 072</a>
-      <a class="btn" href="../kontakt/">Poptávka</a>
+      <a class="btn" href="../kontakt/">Poptat plavbu</a>
+      <button class="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Otevřít menu"><span></span></button>
     </div>
   </div>
 </header>
@@ -45,26 +44,27 @@
     
   </div>
 </section>
-<section class="section"><div class="wrap">
+<nav class="subnav" aria-label="Obsah stránky"><div class="wrap"><a href="#zpusoby">Způsoby plavby</a><a href="#rezervace">Rezervace</a><a href="#lode">Lodě</a><a href="#cena">Cena a balení</a><a href="#otazky">Otázky</a><a href="#slovnik">Slovník</a></div></nav>
+<section class="section" id="zpusoby"><div class="wrap">
   <div class="sec-head"><div><span class="kicker">Způsoby plavby</span><h2>Tři způsoby, jak vyplout</h2></div><p>Ať jste na lodi poprvé, nebo máte kapitánský průkaz.</p></div>
-  <div class="ways">
-    <div class="way"><h3>S kapitánem</h3><p>Loď řídí náš kapitán a zároveň je vaším průvodcem. Vy se učíte, nebo jen odpočíváte. Nejčastější volba našich hostů.</p><p class="for">Bez zkušeností</p></div>
-    <div class="way"><h3>Ve flotile</h3><p>Plujete na vlastní lodi v doprovodu naší kapitánské lodi. Pro jachtaře, kteří chtějí jistotu v neznámých vodách nebo při nočních přejezdech.</p><p class="for">Pro jachtaře s průkazem</p></div>
-    <div class="way"><h3>Pronájem lodi</h3><p>Máte kapitánský průkaz a chcete plout sami. Plachetnici, katamarán i motorovou jachtu zajistíme prakticky kdekoli na světě.</p><p class="for">Pro zkušené kapitány</p></div>
+  <div class="panels">
+    <div class="panel"><span class="tag">Nejčastější volba</span><h3>S kapitánem</h3><p>Loď řídí náš kapitán a zároveň je vaším průvodcem. Vy se učíte, nebo jen odpočíváte.</p><dl><dt>Pro koho</dt><dd>Začátečníci, rodiny, firmy</dd><dt>Zkušenosti</dt><dd>Nejsou potřeba</dd></dl></div>
+    <div class="panel"><h3>Ve flotile</h3><p>Plujete na vlastní lodi v doprovodu naší kapitánské lodi. Jistota v neznámých vodách nebo při nočních přejezdech.</p><dl><dt>Pro koho</dt><dd>Jachtaři, kteří chtějí jistotu</dd><dt>Zkušenosti</dt><dd>Kapitánský průkaz</dd></dl></div>
+    <div class="panel"><h3>Pronájem lodi</h3><p>Plachetnici, katamarán i motorovou jachtu zajistíme prakticky kdekoli na světě.</p><dl><dt>Pro koho</dt><dd>Samostatní kapitáni</dd><dt>Zkušenosti</dt><dd>Kapitánský průkaz</dd></dl></div>
   </div>
 </div></section>
-<section class="section dark"><div class="wrap">
+<section class="section dark" id="rezervace"><div class="wrap">
   <div class="sec-head"><div><span class="kicker">Rezervace</span><h2>Od první zprávy po vyplutí</h2></div><p>Většinu zařídíme za vás.</p></div>
   <ol class="process"><li><h4>Poptávka</h4><p>Napíšete, kdy, kolik vás je a kam byste chtěli.</p></li><li><h4>Návrh plavby</h4><p>Připravíme trasu, loď a cenu na míru a doladíme je spolu.</p></li><li><h4>Rezervace</h4><p>Po zaplacení zálohy jsou loď i kapitán jen vaši.</p></li><li><h4>Vyplutí</h4><p>Přivítáme vás v maríně, kapitán vás provede lodí a vyrazíme.</p></li></ol>
 </div></section>
-<section class="section ivory"><div class="wrap">
+<section class="section ivory" id="lode"><div class="wrap">
   <div class="sec-head"><div><span class="kicker">Lodě</span><h2>Plachetnice, nebo katamarán?</h2></div><p>Obojí má své kouzlo. Rádi poradíme, co se hodí právě pro vás.</p></div>
   <div class="twin">
     <div><h3>Plachetnice</h3><p class="note">Pro ty, kdo chtějí zažít opravdové plachtění.</p><ul class="ticks"><li>Klasický zážitek z plavby pod plachtami</li><li>Loď se při plavbě naklání s větrem</li><li>Ideální pro menší skupiny a páry</li><li>Obvykle dostupnější cena</li></ul></div>
     <div><h3>Katamarán</h3><p class="note">Pro ty, kdo chtějí víc prostoru a pohodlí.</p><ul class="ticks"><li>Dva trupy, loď se téměř nenaklání</li><li>Menší riziko mořské nemoci</li><li>Víc prostoru a soukromí v kajutách</li><li>Vhodný pro rodiny s dětmi a větší skupiny</li></ul></div>
   </div>
 </div></section>
-<section class="section"><div class="wrap">
+<section class="section" id="cena"><div class="wrap">
   <div class="twin">
     <div><span class="kicker">Cena</span><h3 style="margin-top:18px">Co je v ceně</h3><p class="note">Přesný rozpis dostanete s každou nabídkou.</p><ul class="ticks"><li>Loď a její vybavení</li><li>Kapitán po celou dobu plavby</li><li>Návrh trasy na míru</li></ul><h3 style="margin-top:56px">Co se obvykle platí na místě</h3><ul class="ticks"><li>Lodní kasa na jídlo a pití</li><li>Palivo</li><li>Přístavní a kotevní poplatky</li></ul></div>
     <div><span class="kicker">Balení</span><h3 style="margin-top:18px">Co si vzít s sebou</h3><p class="note">Na lodi se hodí málo věcí a měkká taška.</p><ul class="ticks"><li>Měkkou tašku místo kufru, na lodi se lépe uloží</li><li>Boty se světlou podrážkou, nebo jen pantofle</li><li>Opalovací krém, klobouk a sluneční brýle</li><li>Větrovku, večer na moři bývá chladněji</li><li>Léky proti nevolnosti, pokud jste citliví</li><li>Doklady a kapitánský průkaz, pokud ho máte</li></ul></div>
@@ -81,7 +81,7 @@
         <a class="logo" href="../"><span class="l1">Carib Yacht</span><span class="l2">Sailing</span></a>
         <p class="about">Soukromé a firemní plavby s vlastními kapitány. Rodinná jachtařská tradice od roku 1974.</p>
       </div>
-      <div><h4>Destinace</h4><ul><li><a href="../destinace/turecko/">Turecko</a></li><li><a href="../destinace/chorvatsko/">Chorvatsko</a></li><li><a href="../destinace/karibik/">Karibik</a></li><li><a href="../destinace/">Plavby na míru</a></li></ul></div>
+      <div><h4>Destinace</h4><ul><li><a href="../destinace/stredomori/">Středomoří</a></li><li><a href="../destinace/severni-more/">Severní moře</a></li><li><a href="../destinace/karibik/">Karibik</a></li><li><a href="../destinace/vzdalena-more/">Vzdálená moře</a></li></ul></div>
       <div><h4>Informace</h4><ul><li><a href="../pro-firmy/">Pro firmy</a></li><li><a href="../kapitani/">Kapitáni</a></li><li><a href="../jak-to-funguje/">Jak to funguje</a></li><li><a href="../jak-to-funguje/#slovnik">Jachtařský slovník</a></li></ul></div>
       <div><h4>Kontakt</h4><ul><li><a href="tel:+420737168072">+420 737 168 072</a></li><li><a href="mailto:info@caribyacht.cz">info@caribyacht.cz</a></li><li><address>Šeříková 32<br>637 00 Brno-Jundrov</address></li></ul></div>
     </div>

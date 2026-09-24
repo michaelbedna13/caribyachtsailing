@@ -4,7 +4,8 @@
   --ivory:#F6F3ED;
   --white:#FFFFFF;
   --ink:#121C25;
-  --stone:#6B7278;
+  --stone:#50585E;
+  --brass-text:#83663A;
   --brass:#A98752;
   --brass-light:#CDB184;
   --line:rgba(18,28,37,.12);
@@ -16,7 +17,7 @@
 }
 *,*::before,*::after{box-sizing:border-box}
 html{scroll-behavior:smooth;scroll-padding-top:90px;-webkit-text-size-adjust:100%}
-body{margin:0;background:var(--white);color:var(--ink);font-family:var(--sans);font-weight:300;font-size:17px;line-height:1.8;-webkit-font-smoothing:antialiased}
+body{margin:0;background:var(--white);color:var(--ink);font-family:var(--sans);font-weight:400;font-size:18px;line-height:1.72;-webkit-font-smoothing:antialiased}
 img{display:block;max-width:100%}
 a{color:inherit}
 h1,h2,h3,h4{margin:0;font-family:var(--serif);font-weight:400;font-optical-sizing:auto;line-height:1.08;letter-spacing:-.01em;text-wrap:balance}
@@ -29,32 +30,32 @@ ul,ol{margin:0;padding:0;list-style:none}
 .skip:focus{left:1rem;top:1rem}
 
 /* Typografické prvky */
-.kicker{display:block;font-family:var(--sans);font-size:12px;font-weight:400;letter-spacing:.28em;text-transform:uppercase;color:var(--brass)}
+.kicker{display:block;font-family:var(--sans);font-size:13px;font-weight:500;letter-spacing:.2em;text-transform:uppercase;color:var(--brass-text)}
 .dark .kicker{color:var(--brass-light)}
 .on-image .kicker{color:rgba(255,255,255,.85)}
-.btn{display:inline-flex;align-items:center;justify-content:center;gap:14px;font-family:var(--sans);font-size:12px;font-weight:400;letter-spacing:.24em;text-transform:uppercase;text-decoration:none;padding:18px 34px;border:1px solid currentColor;background:transparent;color:inherit;cursor:pointer;transition:background-color .4s var(--ease),color .4s var(--ease),border-color .4s var(--ease)}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:14px;font-family:var(--sans);font-size:13px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;text-decoration:none;padding:18px 34px;border:1px solid currentColor;background:transparent;color:inherit;cursor:pointer;transition:background-color .4s var(--ease),color .4s var(--ease),border-color .4s var(--ease)}
 .btn:hover{background:var(--ink);color:#fff;border-color:var(--ink)}
 .dark .btn:hover,.on-image .btn:hover{background:#fff;color:var(--ink);border-color:#fff}
 .btn-brass{background:var(--brass);border-color:var(--brass);color:#fff}
 .btn-brass:hover{background:var(--brass-light)!important;border-color:var(--brass-light)!important;color:var(--midnight)!important}
-.line-link{display:inline-flex;align-items:center;gap:16px;font-size:12px;font-weight:400;letter-spacing:.24em;text-transform:uppercase;text-decoration:none}
+.line-link{display:inline-flex;align-items:center;gap:16px;font-size:13px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;text-decoration:none}
 .line-link::after{content:"";width:48px;height:1px;background:currentColor;transition:width .5s var(--ease)}
 .line-link:hover::after,a:hover .line-link::after{width:80px}
 
 /* Hlavička */
 .header{position:fixed;inset:0 0 auto 0;height:var(--header-h);z-index:100;color:#fff;transition:background-color .5s var(--ease),height .5s var(--ease)}
 .header.scrolled{background:rgba(11,22,33,.94);-webkit-backdrop-filter:blur(10px);backdrop-filter:blur(10px);height:72px}
-.header-inner{height:100%;display:grid;grid-template-columns:1fr auto 1fr;align-items:center;gap:24px}
-.nav{display:flex;gap:32px}
-.nav a,.header-right a.tel{font-size:12px;letter-spacing:.2em;text-transform:uppercase;text-decoration:none;opacity:.82;transition:opacity .3s;white-space:nowrap}
-.nav a:hover,.nav a[aria-current="page"],.header-right a.tel:hover{opacity:1}
+.header-inner{height:100%;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:32px}
+.nav{display:flex;gap:clamp(22px,2.6vw,40px);justify-self:center}
+.nav a{font-size:13px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;text-decoration:none;opacity:.82;transition:opacity .3s;white-space:nowrap}
+.nav a:hover,.nav a[aria-current="page"]{opacity:1}
 .nav a[aria-current="page"]{box-shadow:0 1px 0 var(--brass-light)}
-.logo{justify-self:center;text-decoration:none;text-align:center;line-height:1;white-space:nowrap}
-.logo .l1{display:block;font-family:var(--serif);font-size:24px;font-weight:500;letter-spacing:.14em;text-transform:uppercase}
-.logo .l2{display:block;margin-top:7px;font-size:10px;letter-spacing:.5em;text-transform:uppercase;opacity:.75;padding-left:.5em}
-.header-right{justify-self:end;display:flex;align-items:center;gap:32px}
+.logo{justify-self:start;text-decoration:none;text-align:left;line-height:1;white-space:nowrap}
+.logo .l1{display:block;font-family:var(--serif);font-size:23px;font-weight:500;letter-spacing:.12em;text-transform:uppercase}
+.logo .l2{display:block;margin-top:7px;font-size:10px;font-weight:500;letter-spacing:.52em;text-transform:uppercase;opacity:.8}
+.header-right{justify-self:end;display:flex;align-items:center;gap:16px}
 .header-right .btn{padding:13px 24px}
-.burger{display:none;justify-self:start;width:44px;height:44px;border:0;background:transparent;color:inherit;padding:0;cursor:pointer}
+.burger{display:none;width:44px;height:44px;border:0;background:transparent;color:inherit;padding:0;cursor:pointer}
 .burger span{display:block;width:26px;height:1px;background:currentColor;position:relative;transition:background-color .3s}
 .burger span::before,.burger span::after{content:"";position:absolute;left:0;width:26px;height:1px;background:currentColor;transition:transform .35s var(--ease)}
 .burger span::before{top:-8px}
@@ -67,7 +68,7 @@ ul,ol{margin:0;padding:0;list-style:none}
 .menu nav a{display:block;font-family:var(--serif);font-size:clamp(30px,8vw,46px);line-height:1.45;text-decoration:none}
 .menu .menu-foot{margin-top:48px;padding-top:28px;border-top:1px solid var(--line-d);display:grid;gap:10px;font-size:14px;letter-spacing:.08em}
 .menu .menu-foot a{text-decoration:none}
-@media (max-width:1180px){.nav,.header-right a.tel{display:none}.burger{display:block}}
+@media (max-width:1100px){.nav{display:none}.burger{display:block}}
 @media (max-width:600px){.header-right .btn{display:none}.logo .l1{font-size:20px}.logo .l2{font-size:9px}}
 
 /* Hero */
@@ -78,9 +79,9 @@ ul,ol{margin:0;padding:0;list-style:none}
 @keyframes settle{to{transform:scale(1)}}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(6,13,20,.55) 0%,rgba(6,13,20,0) 30%,rgba(6,13,20,.12) 55%,rgba(6,13,20,.74) 100%)}
 .hero-content{position:relative;z-index:1;padding-bottom:clamp(56px,10vh,110px);display:grid;grid-template-columns:1fr auto;align-items:end;gap:40px}
-.hero h1{margin-top:22px;font-size:clamp(46px,7.6vw,114px);line-height:1;letter-spacing:-.02em;max-width:12ch}
+.hero h1{margin-top:22px;font-size:clamp(46px,7.4vw,112px);line-height:1;letter-spacing:-.02em;max-width:12ch}
 .hero.page h1{font-size:clamp(44px,6.4vw,92px)}
-.hero .sub{margin-top:26px;max-width:460px;font-size:18px;color:rgba(255,255,255,.86)}
+.hero .sub{margin-top:26px;max-width:480px;font-size:19px;color:rgba(255,255,255,.92)}
 .hero-side{display:grid;gap:28px;justify-items:end;text-align:right}
 .scroll-cue{display:flex;flex-direction:column;align-items:center;gap:12px;font-size:10px;letter-spacing:.3em;text-transform:uppercase;writing-mode:vertical-rl;opacity:.8}
 .scroll-cue::after{content:"";width:1px;height:64px;background:linear-gradient(#fff,transparent)}
@@ -93,9 +94,9 @@ ul,ol{margin:0;padding:0;list-style:none}
 .dark{background:var(--midnight);color:#fff}
 .sec-head{display:grid;grid-template-columns:1fr 1fr;gap:40px;align-items:end;margin-bottom:clamp(52px,7vw,90px)}
 .sec-head h2{margin-top:20px;font-size:clamp(36px,4.6vw,64px)}
-.sec-head p{color:var(--stone);max-width:460px;justify-self:end}
+.sec-head p{color:var(--stone);max-width:480px;justify-self:end;font-size:18px}
 .sec-head .aside{justify-self:end;display:grid;gap:24px;justify-items:start;max-width:460px}
-.dark .sec-head p{color:rgba(255,255,255,.66)}
+.dark .sec-head p{color:rgba(255,255,255,.8)}
 @media (max-width:860px){.sec-head{grid-template-columns:1fr}.sec-head p,.sec-head .aside{justify-self:start}}
 
 /* Úvodní text */
@@ -109,7 +110,7 @@ ul,ol{margin:0;padding:0;list-style:none}
 .figures div{padding:36px 20px 0;text-align:center}
 .figures div + div{border-left:1px solid var(--line)}
 .figures strong{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(40px,4.6vw,62px);line-height:1}
-.figures span{display:block;margin-top:12px;font-size:12px;letter-spacing:.22em;text-transform:uppercase;color:var(--stone)}
+.figures span{display:block;margin-top:12px;font-size:13px;font-weight:500;letter-spacing:.22em;text-transform:uppercase;color:var(--stone)}
 @media (max-width:600px){.figures{grid-template-columns:1fr}.figures div + div{border-left:0;border-top:1px solid var(--line)}.figures div{padding:28px 0}}
 
 /* Karty destinací */
@@ -122,7 +123,7 @@ ul,ol{margin:0;padding:0;list-style:none}
 .dcard h3{margin-top:12px;font-size:clamp(34px,3.2vw,46px)}
 .dcard p{margin-top:12px;color:var(--stone);max-width:380px}
 .dcard .line-link{margin-top:22px}
-.dark .dcard p{color:rgba(255,255,255,.66)}
+.dark .dcard p{color:rgba(255,255,255,.8)}
 @media (max-width:960px){.dcards{grid-template-columns:1fr 1fr}}
 @media (max-width:640px){.dcards{grid-template-columns:1fr;gap:56px}.dcard .img{aspect-ratio:4/3.6}}
 .bespoke{margin-top:clamp(80px,10vw,130px);padding:clamp(44px,6vw,68px) 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);display:grid;grid-template-columns:1fr auto;gap:32px;align-items:center}
@@ -137,7 +138,7 @@ ul,ol{margin:0;padding:0;list-style:none}
 .split-img img{width:100%;height:100%;object-fit:cover}
 .split h2{margin-top:20px;font-size:clamp(36px,4.4vw,62px)}
 .split .lead{margin-top:26px;color:var(--stone);max-width:480px}
-.dark .split .lead{color:rgba(255,255,255,.7)}
+.dark .split .lead{color:rgba(255,255,255,.8)}
 .rows{margin:40px 0 48px}
 .rows li{display:flex;justify-content:space-between;gap:20px;padding:18px 0;border-top:1px solid var(--line);font-family:var(--serif);font-size:22px}
 .rows li:last-child{border-bottom:1px solid var(--line)}
@@ -155,7 +156,7 @@ ul,ol{margin:0;padding:0;list-style:none}
 .ccard .kicker{margin-top:26px}
 .ccard h3{margin-top:10px;font-size:clamp(26px,2.4vw,34px)}
 .ccard p{margin-top:10px;color:var(--stone)}
-.dark .ccard p{color:rgba(255,255,255,.66)}
+.dark .ccard p{color:rgba(255,255,255,.8)}
 .ccard .line-link{margin-top:20px}
 @media (max-width:960px){.ccards{grid-template-columns:1fr 1fr}}
 @media (max-width:640px){.ccards{grid-template-columns:1fr;gap:56px}}
@@ -168,7 +169,7 @@ ul,ol{margin:0;padding:0;list-style:none}
 .dark .way + .way{border-color:var(--line-d)}
 .way h3{font-size:clamp(28px,2.6vw,36px)}
 .way p{margin-top:16px;color:var(--stone)}
-.dark .way p{color:rgba(255,255,255,.7)}
+.dark .way p{color:rgba(255,255,255,.8)}
 .way .for{margin-top:22px;font-size:11px;letter-spacing:.22em;text-transform:uppercase;color:var(--brass)}
 .dark .way .for{color:var(--brass-light)}
 @media (max-width:900px){.ways{grid-template-columns:1fr}.way,.way + .way{padding:40px 0;border-left:0}.way + .way{border-top:1px solid var(--line)}.dark .way + .way{border-color:var(--line-d)}}
@@ -179,9 +180,9 @@ ul,ol{margin:0;padding:0;list-style:none}
 .dark .process li{border-color:var(--line-d)}
 .process li::before{content:counter(s, upper-roman);display:block;font-family:var(--serif);font-size:34px;line-height:1;color:var(--brass);margin-bottom:22px}
 .dark .process li::before{color:var(--brass-light)}
-.process h4{font-family:var(--sans);font-weight:400;font-size:13px;letter-spacing:.2em;text-transform:uppercase}
+.process h4{font-family:var(--sans);font-weight:500;font-size:14px;letter-spacing:.2em;text-transform:uppercase}
 .process p{margin-top:12px;color:var(--stone);font-size:16px}
-.dark .process p{color:rgba(255,255,255,.7)}
+.dark .process p{color:rgba(255,255,255,.8)}
 @media (max-width:900px){.process{grid-template-columns:1fr 1fr}}
 @media (max-width:560px){.process{grid-template-columns:1fr;gap:32px}}
 .more{margin-top:clamp(56px,7vw,80px)}
@@ -191,19 +192,19 @@ ul,ol{margin:0;padding:0;list-style:none}
 .facts dl{margin:0;display:grid;grid-template-columns:repeat(4,1fr)}
 .facts div{padding:30px 24px 30px 0}
 .facts div + div{padding-left:24px;border-left:1px solid var(--line)}
-.facts dt{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:var(--stone)}
+.facts dt{font-size:12px;font-weight:500;letter-spacing:.18em;text-transform:uppercase;color:var(--stone)}
 .facts dd{margin:6px 0 0;font-family:var(--serif);font-size:22px;line-height:1.3}
 @media (max-width:860px){.facts dl{grid-template-columns:1fr 1fr}.facts div:nth-child(3){padding-left:0;border-left:0}.facts div:nth-child(n+3){border-top:1px solid var(--line)}}
 .cols{display:grid;grid-template-columns:5fr 6fr;gap:clamp(40px,8vw,140px)}
 .cols h2{margin-top:20px;font-size:clamp(34px,4vw,56px)}
 .cols .body p + p{margin-top:20px}
 .cols .body p{color:var(--stone)}
-.dark .cols .body p{color:rgba(255,255,255,.72)}
+.dark .cols .body p{color:rgba(255,255,255,.82)}
 @media (max-width:860px){.cols{grid-template-columns:1fr}}
 .stops{counter-reset:st}
 .stops li{counter-increment:st;display:grid;grid-template-columns:80px 1fr 1.3fr;gap:32px;align-items:baseline;padding:30px 0;border-top:1px solid var(--line)}
 .stops li:last-child{border-bottom:1px solid var(--line)}
-.stops li::before{content:counter(st, decimal-leading-zero);font-size:12px;letter-spacing:.24em;color:var(--brass)}
+.stops li::before{content:counter(st, decimal-leading-zero);font-size:13px;font-weight:500;letter-spacing:.2em;color:var(--brass-text)}
 .stops h3{font-size:clamp(26px,2.6vw,36px)}
 .stops p{color:var(--stone)}
 @media (max-width:760px){.stops li{grid-template-columns:48px 1fr;gap:6px 16px}.stops li p{grid-column:2}}
@@ -217,7 +218,7 @@ ul,ol{margin:0;padding:0;list-style:none}
 .dark .points li{border-color:var(--line-d)}
 .points h3{font-size:26px}
 .points p{margin-top:12px;color:var(--stone)}
-.dark .points p{color:rgba(255,255,255,.7)}
+.dark .points p{color:rgba(255,255,255,.8)}
 @media (max-width:860px){.points{grid-template-columns:1fr}}
 
 /* Seznamy a srovnání */
@@ -278,13 +279,13 @@ ul,ol{margin:0;padding:0;list-style:none}
 /* Kontakt */
 .contact{display:grid;grid-template-columns:5fr 6fr;gap:clamp(48px,8vw,140px)}
 .contact h2{margin-top:20px;font-size:clamp(36px,4.4vw,60px)}
-.contact .lead{margin-top:24px;color:rgba(255,255,255,.7);max-width:420px}
+.contact .lead{margin-top:24px;color:rgba(255,255,255,.8);max-width:420px}
 .people{margin-top:56px;display:grid;gap:28px}
 .people div{display:grid;gap:2px}
 .people span{font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:rgba(255,255,255,.55)}
 .people a{font-family:var(--serif);font-size:28px;text-decoration:none;line-height:1.25}
 .people a:hover{color:var(--brass-light)}
-.people address{font-style:normal;color:rgba(255,255,255,.72);font-size:16px}
+.people address{font-style:normal;color:rgba(255,255,255,.82);font-size:16px}
 .form{display:grid;grid-template-columns:1fr 1fr;gap:40px 36px;align-content:start}
 .form .full{grid-column:1 / -1}
 .form fieldset{border:0;margin:0;padding:0;min-width:0}
@@ -304,11 +305,11 @@ ul,ol{margin:0;padding:0;list-style:none}
 @media (max-width:560px){.form{grid-template-columns:1fr;gap:32px}}
 
 /* Patička */
-.footer{background:#070F17;color:rgba(255,255,255,.6);padding:96px 0 40px;font-size:15px}
+.footer{background:#070F17;color:rgba(255,255,255,.74);padding:96px 0 40px;font-size:15px}
 .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:40px;padding-bottom:64px;border-bottom:1px solid var(--line-d)}
 .footer .logo{justify-self:start;color:#fff;text-align:left;display:inline-block}
 .footer .about{margin-top:24px;max-width:280px}
-.footer h4{font-family:var(--sans);font-weight:400;font-size:11px;letter-spacing:.24em;text-transform:uppercase;color:#fff;margin-bottom:18px}
+.footer h4{font-family:var(--sans);font-weight:500;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#fff;margin-bottom:18px}
 .footer ul{display:grid;gap:8px}
 .footer a{text-decoration:none}
 .footer a:hover{color:#fff}
@@ -325,3 +326,126 @@ ul,ol{margin:0;padding:0;list-style:none}
   .reveal{opacity:1;transition:none}
   *,*::before,*::after{transition:none!important}
 }
+
+/* ===== v6 ===== */
+.dark .rows li{border-color:var(--line-d)}
+.dark .rows li span{color:rgba(255,255,255,.72)}
+.dcard .img{position:relative}
+
+/* Carousel destinací */
+.carousel{--gap:clamp(18px,2vw,32px);--bleed:max(1.5rem, calc((100vw - 1320px) / 2))}
+.car-track{display:grid;grid-auto-flow:column;grid-auto-columns:calc((min(1320px,100vw - 3rem) - 2 * var(--gap)) / 3.25);gap:var(--gap);overflow-x:auto;overscroll-behavior-x:contain;scroll-snap-type:x mandatory;scroll-padding-left:0;scrollbar-width:none;margin-right:calc(-1 * var(--bleed));padding-right:var(--bleed);padding-bottom:6px}
+.car-track::-webkit-scrollbar{display:none}
+.car-track:focus-visible{outline:1px solid var(--brass);outline-offset:8px}
+.car-track .dcard{scroll-snap-align:start}
+.car-ui{margin-top:44px;display:flex;align-items:center;gap:40px}
+.car-progress{flex:1;height:1px;background:var(--line);position:relative;overflow:hidden}
+.car-progress span{position:absolute;left:0;top:0;bottom:0;width:30%;background:var(--ink);transition:transform .3s var(--ease),width .3s var(--ease)}
+.car-btns{display:flex;gap:10px}
+.car-btn{width:56px;height:56px;border-radius:50%;border:1px solid var(--ink);background:transparent;color:var(--ink);display:grid;place-items:center;cursor:pointer;transition:background-color .3s,color .3s,opacity .3s}
+.car-btn:hover:not(:disabled){background:var(--ink);color:#fff}
+.car-btn:disabled{opacity:.25;cursor:default}
+@media (max-width:960px){.car-track{grid-auto-columns:calc((100vw - 3rem - var(--gap)) / 2.15)}}
+@media (max-width:640px){.car-track{grid-auto-columns:82%}.car-track .dcard .img{aspect-ratio:4/4.6}.car-ui{margin-top:32px;gap:24px}.car-btn{width:48px;height:48px}}
+
+/* Panely způsobů plavby */
+.panels{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(16px,2vw,28px)}
+.panel{position:relative;background:var(--ivory);padding:clamp(28px,3vw,44px);display:flex;flex-direction:column}
+.ivory .panel{background:var(--white)}
+.panel .tag{position:absolute;top:0;right:0;background:var(--midnight);color:#fff;font-size:11px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;padding:8px 14px}
+.panel h3{font-size:clamp(28px,2.6vw,36px)}
+.panel p{margin-top:14px;color:var(--stone);flex:1}
+.panel dl{margin:28px 0 0;display:grid;grid-template-columns:auto 1fr;gap:10px 20px;padding-top:20px;border-top:1px solid var(--line);font-size:16px}
+.panel dt{font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);padding-top:2px}
+.panel dd{margin:0;font-weight:500}
+@media (max-width:900px){.panels{grid-template-columns:1fr}}
+
+/* Podnavigace */
+.subnav{position:sticky;top:72px;z-index:50;background:rgba(255,255,255,.97);border-bottom:1px solid var(--line);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px)}
+.subnav .wrap{display:flex;gap:32px;overflow-x:auto;scrollbar-width:none}
+.subnav .wrap::-webkit-scrollbar{display:none}
+.subnav a{flex:none;padding:18px 0;font-size:13px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--stone);border-bottom:1px solid transparent;transition:color .3s,border-color .3s}
+.subnav a:hover,.subnav a.active{color:var(--ink);border-bottom-color:var(--brass)}
+
+/* Kontakt a formulář */
+.contact{grid-template-columns:4fr 7fr;align-items:start}
+.contact-info{position:sticky;top:110px}
+.contact-info h2{margin-top:20px;font-size:clamp(36px,4.2vw,56px)}
+.contact-info .lead{margin-top:22px;color:var(--stone);max-width:420px}
+.contact-info .people{margin:44px 0 0;display:grid;gap:0}
+.contact-info .people div{padding:18px 0;border-top:1px solid var(--line);display:grid;gap:2px}
+.contact-info .people div:last-child{border-bottom:1px solid var(--line)}
+.contact-info .people dt{font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--stone)}
+.contact-info .people dd{margin:0}
+.contact-info .people a{font-family:var(--serif);font-size:26px;text-decoration:none;color:var(--ink);line-height:1.3}
+.contact-info .people a:hover{color:var(--brass-text)}
+.contact-info address{font-style:normal;color:var(--ink);font-size:17px}
+.form-card{background:#fff;border:1px solid var(--line);padding:clamp(28px,4vw,56px);display:grid;grid-template-columns:1fr 1fr;gap:26px 24px}
+.form-card .full{grid-column:1 / -1}
+.form-card fieldset{border:0;margin:0 0 6px;padding:0;min-width:0}
+.form-card legend{font-family:var(--serif);font-size:28px;margin-bottom:18px;padding:0}
+.tiles{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+.tile{position:relative}
+.tile input{position:absolute;opacity:0;width:1px;height:1px}
+.tile label{display:block;height:100%;padding:18px 20px 18px 52px;border:1px solid #C9CFD4;cursor:pointer;transition:border-color .25s,background-color .25s,box-shadow .25s;position:relative}
+.tile label::before{content:"";position:absolute;left:20px;top:21px;width:18px;height:18px;border-radius:50%;border:1px solid #9AA2A8;background:#fff;transition:all .25s}
+.tile strong{display:block;font-weight:500;font-size:17px;line-height:1.35}
+.tile span{display:block;margin-top:2px;font-size:15px;color:var(--stone);line-height:1.45}
+.tile label:hover{border-color:var(--ink)}
+.tile input:checked + label{border-color:var(--ink);background:var(--ivory);box-shadow:inset 0 0 0 1px var(--ink)}
+.tile input:checked + label::before{border:5px solid var(--midnight)}
+.tile input:focus-visible + label{outline:2px solid var(--brass);outline-offset:2px}
+.field label{display:block;font-size:15px;font-weight:500;color:var(--ink);margin-bottom:8px}
+.field .req{color:var(--brass-text)}
+.field input,.field textarea{width:100%;font:400 17px/1.4 var(--sans);color:var(--ink);background:#fff;border:1px solid #C9CFD4;border-radius:2px;padding:15px 16px;transition:border-color .25s,box-shadow .25s}
+.field textarea{min-height:140px;resize:vertical}
+.field input::placeholder,.field textarea::placeholder{color:#8E969C}
+.field input:hover,.field textarea:hover{border-color:#9AA2A8}
+.field input:focus,.field textarea:focus{outline:0;border-color:var(--ink);box-shadow:0 0 0 3px rgba(169,135,82,.28)}
+.field input:user-invalid{border-color:#B3261E}
+.form-card .submit{display:flex;flex-wrap:wrap;align-items:center;gap:16px 28px;margin-top:8px}
+.form-card .note{font-size:14px;color:var(--stone);max-width:360px;line-height:1.5}
+.btn-solid{background:var(--midnight);border-color:var(--midnight);color:#fff;padding:20px 40px}
+.btn-solid:hover{background:var(--brass)!important;border-color:var(--brass)!important;color:#fff!important}
+@media (max-width:900px){.contact{grid-template-columns:1fr}.contact-info{position:static}}
+@media (max-width:600px){.form-card{grid-template-columns:1fr;padding:24px 20px}.tiles{grid-template-columns:1fr}.btn-solid{width:100%}}
+body{overflow-x:clip}
+.header-right{grid-column:3}
+
+/* ===== v7 ===== */
+/* Oblasti na přehledu destinací */
+.region{display:grid;grid-template-columns:7fr 5fr;gap:clamp(40px,7vw,110px);align-items:center}
+.region + .region{margin-top:clamp(88px,11vw,150px)}
+.region.rev{grid-template-columns:5fr 7fr}
+.region.rev .region-img{order:2}
+.region-img{display:block;overflow:hidden;aspect-ratio:4/3}
+.region-img img{width:100%;height:100%;object-fit:cover;transition:transform 1.6s var(--ease)}
+.region-img:hover img{transform:scale(1.035)}
+.region h3{margin-top:16px;font-size:clamp(44px,5.4vw,78px)}
+.region h3 a{text-decoration:none}
+.region .lead{margin-top:18px;font-weight:500;color:var(--ink)}
+.region p{margin-top:14px;color:var(--stone);max-width:460px}
+.region .line-link{margin-top:30px}
+@media (max-width:900px){.region,.region.rev{grid-template-columns:1fr;gap:32px}.region.rev .region-img{order:0}}
+
+/* Drobečková navigace */
+.crumbwrap{border-bottom:1px solid var(--line)}
+.crumbs{display:flex;flex-wrap:wrap;gap:10px;padding:18px 0;font-size:14px;color:var(--stone)}
+.crumbs a{text-decoration:none;color:var(--stone)}
+.crumbs a:hover{color:var(--ink)}
+.crumbs [aria-current]{color:var(--ink);font-weight:500}
+.facts .crumbs{border-bottom:1px solid var(--line)}
+
+/* Seznam dalších míst */
+.dest-list{display:grid;grid-template-columns:1fr 1fr;column-gap:clamp(40px,6vw,96px)}
+.dest-list li{display:flex;justify-content:space-between;align-items:center;gap:20px;padding:22px 0;border-top:1px solid var(--line)}
+.dest-list li:nth-last-child(-n+2){border-bottom:1px solid var(--line)}
+.dest-list .name{font-family:var(--serif);font-size:clamp(24px,2.4vw,30px);line-height:1.2}
+@media (max-width:760px){.dest-list{grid-template-columns:1fr}.dest-list li:nth-last-child(2){border-bottom:0}}
+
+/* Trasa jako linka se zastávkami */
+.route{display:flex;flex-wrap:wrap;gap:0;counter-reset:r;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+.route li{flex:1 1 150px;counter-increment:r;padding:28px 20px 28px 0;position:relative;font-family:var(--serif);font-size:clamp(22px,2vw,28px);line-height:1.2}
+.route li::before{content:counter(r, decimal-leading-zero);display:block;margin-bottom:12px;font-family:var(--sans);font-size:13px;font-weight:500;letter-spacing:.2em;color:var(--brass-text)}
+.route li + li{padding-left:20px;border-left:1px solid var(--line)}
+@media (max-width:700px){.route{display:grid;grid-template-columns:1fr 1fr}.route li,.route li + li{padding:22px 16px 22px 0;border-left:0;border-bottom:1px solid var(--line)}.route li:nth-child(even){padding-left:16px;border-left:1px solid var(--line)}}
