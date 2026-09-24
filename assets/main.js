@@ -20,11 +20,6 @@
     els.forEach(function(el){io.observe(el);});
   } else { els.forEach(function(el){el.classList.add('in');}); }
 
-  // Předvyplnění poptávky z odkazu, např. kontakt/?typ=firemni&destinace=Turecko
-  var q=new URLSearchParams(location.search);
-  var typ=q.get('typ'); if(typ){var r=document.querySelector('input[name="typ"][data-key="'+typ+'"]'); if(r) r.checked=true;}
-  var dest=q.get('destinace'); var z=document.getElementById('f7'); if(dest&&z&&!z.value){z.value=dest;}
-
   var y=document.getElementById('y'); if(y) y.textContent=new Date().getFullYear();
 })();
 
@@ -187,3 +182,91 @@ document.querySelectorAll('[data-story]').forEach(function(track){
   window.addEventListener('resize',setup); window.addEventListener('load',setup);
   setup();
 });
+
+// Poptávkový formulář: přestavuje se podle typu poptávky a odesílá do Google Apps Scriptu
+(function(){
+  var tsum=document.getElementById('tsum');
+  if(tsum){ var sm=new URLSearchParams(location.search).get('s'); if(sm){ tsum.textContent=sm; tsum.hidden=false; } }
+  var form=document.getElementById('poptavka'); if(!form) return;
+  var t0=Date.now(), groups=[].slice.call(form.querySelectorAll('.qgroup[data-for]')), contact=form.querySelector('.qcontact');
+  var sumBox=form.querySelector('.qsummary'), sumEl=document.getElementById('qsum'), submitBox=form.querySelector('.submit'), status=document.getElementById('qstatus'), btn=form.querySelector('button[type=submit]');
+  var now=new Date(), Y=now.getFullYear(), defY=now.getMonth()>=8?Y+1:Y;
+  form.querySelectorAll('select.years').forEach(function(sel){ [Y,Y+1,Y+2].forEach(function(y){ var o=document.createElement('option'); o.textContent=y; if(y===defY) o.selected=true; sel.appendChild(o); }); });
+  function key(){ var r=form.querySelector('input[name=typ]:checked'); return r?r.dataset.key:''; }
+  function setOn(el,on){ el.hidden=!on; el.disabled=!on; }
+  function conditions(){
+    form.querySelectorAll('[data-show-when]').forEach(function(el){
+      var g=el.closest('.qgroup'), parts=el.dataset.showWhen.split(':'), src=g.querySelector('[name="'+parts[0]+'"]'), v=src?src.value:'', c=parts[1];
+      var on=!g.disabled&&(c.charAt(0)==='>'?Number(v)>Number(c.slice(1)):v===c);
+      el.hidden=!on; el.querySelectorAll('input,select,textarea').forEach(function(i){ i.disabled=!on; });
+    });
+  }
+  function applyType(){
+    var k=key();
+    groups.forEach(function(g){ setOn(g,g.dataset.for===k); });
+    setOn(contact,!!k); sumBox.hidden=!k; submitBox.hidden=!k;
+    conditions(); update();
+  }
+  function pl(n,a,b,c){ n=Number(n); return n+' '+(n===1?a:(n>=2&&n<=4?b:c)); }
+  function update(){
+    var fd=new FormData(form), g=function(n){ return (fd.get(n)||'').toString().trim(); }, k=key();
+    var m=g('termin_m'), termin=m?(m==='Zatím nevím'?'Termín zatím nevím':m+' '+g('termin_y'))+(g('termin_flex')?', flexibilní':''):'';
+    var parts=[];
+    if(k==='soukroma'){ var os=g('dospeli')?pl(g('dospeli'),'dospělý','dospělí','dospělých'):''; if(os&&Number(g('deti'))>0) os+=' a '+pl(g('deti'),'dítě','děti','dětí'); parts=['Soukromá plavba',g('destinace'),termin,g('delka'),os]; }
+    if(k==='firemni'){ parts=['Firemní akce',g('ucastnici')?pl(g('ucastnici'),'účastník','účastníci','účastníků'):'',g('format'),g('destinace'),termin]; }
+    if(k==='kurz'){ parts=[g('kurz')||'Kurz jachtingu',termin,g('pocet_osob')?pl(g('pocet_osob'),'osoba','osoby','osob'):'']; }
+    if(k==='pronajem'){ parts=[g('pronajem_typ')?'Pronájem lodi, '+g('pronajem_typ').toLowerCase():'Pronájem lodi',g('destinace'),termin,g('lod')]; }
+    if(k==='sluzby'){ parts=[g('sluzba')||'Služby pro majitele lodí',g('lod_majitel'),g('odkud')&&g('kam')?g('odkud')+' až '+g('kam'):g('kotviste')]; }
+    var sum=parts.filter(Boolean).join(', ');
+    sumEl.textContent=sum; form.elements.shrnuti.value=sum; form.elements.termin.value=termin;
+  }
+  form.addEventListener('change',function(e){ if(e.target.name==='typ') applyType(); else { conditions(); update(); } });
+  form.addEventListener('input',function(){ conditions(); update(); });
+
+  // Předvyplnění z odkazu, např. kontakt/?typ=soukroma&destinace=Turecko
+  var q=new URLSearchParams(location.search), t=q.get('typ'); if(t==='jine') t='sluzby';
+  if(t){ var r=form.querySelector('input[name=typ][data-key="'+t+'"]'); if(r) r.checked=true; }
+  applyType();
+  var grp=form.querySelector('.qgroup[data-for="'+key()+'"]');
+  var d=q.get('destinace');
+  if(d&&grp){ var sel=grp.querySelector('select[name=destinace]');
+    if(sel){ var opt=[].slice.call(sel.options).filter(function(o){ return o.text===d||o.text===d+', poraďte s výběrem'; })[0];
+      if(opt) sel.value=opt.value; else { sel.value='Jinam, napíšu do zprávy'; form.elements.zprava.value='Destinace: '+d+'\n'; } } }
+  var sv=q.get('sluzba'); if(sv&&grp){ var ss=grp.querySelector('select[name=sluzba]'); if(ss) ss.value=sv; }
+  conditions(); update();
+
+  function fields(){
+    var out=[];
+    [].slice.call(form.elements).forEach(function(el){
+      if(!el.name||el.disabled||el.type==='hidden'||el.name.charAt(0)==='_'||/^termin_/.test(el.name)) return;
+      if((el.type==='radio'||el.type==='checkbox')&&!el.checked) return;
+      if(!el.value.trim()) return;
+      var f=el.closest('.field'), lab=f&&f.querySelector('label')?f.querySelector('label').textContent.replace('*','').trim():el.name;
+      if(el.name==='typ') lab='Typ poptávky';
+      out.push(lab+': '+el.value.trim());
+    });
+    if(form.elements.termin.value) out.push('Termín: '+form.elements.termin.value);
+    return out;
+  }
+  form.addEventListener('submit',function(e){
+    e.preventDefault(); update(); status.textContent=''; status.className='form-status full';
+    if(!key()){ status.textContent='Vyberte prosím, o co máte zájem.'; status.className+=' err'; return; }
+    if(!form.checkValidity()){ form.reportValidity(); return; }
+    form.elements._t.value=Date.now()-t0;
+    form.elements.stranka.value=document.referrer||location.href;
+    var endpoint=form.dataset.endpoint||'';
+    if(!/^https:\/\//.test(endpoint)){
+      // Formulář ještě není napojený na Apps Script: otevře e-mail s poptávkou
+      location.href='mailto:info@caribyacht.cz?subject='+encodeURIComponent('Poptávka: '+form.elements.shrnuti.value)+'&body='+encodeURIComponent(fields().join('\n'));
+      status.textContent='Otevřeli jsme váš e-mail s předvyplněnou poptávkou. Stačí ji odeslat.'; return;
+    }
+    btn.disabled=true; var label=btn.textContent; btn.textContent='Odesílám';
+    fetch(endpoint,{method:'POST',body:new URLSearchParams(new FormData(form))})
+      .then(function(r){ return r.json(); })
+      .then(function(res){ if(!res||!res.ok) throw new Error(res&&res.error||'Chyba'); location.href=form.dataset.thanks+'?s='+encodeURIComponent(form.elements.shrnuti.value); })
+      .catch(function(){
+        btn.disabled=false; btn.textContent=label; status.className+=' err';
+        status.innerHTML='Odeslání se nepovedlo. Zkuste to prosím znovu, nebo nám napište na <a href="mailto:info@caribyacht.cz">info@caribyacht.cz</a> či zavolejte na <a href="tel:+420737168072">+420 737 168 072</a>.';
+      });
+  });
+})();
