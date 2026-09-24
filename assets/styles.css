@@ -496,3 +496,89 @@ body{overflow-x:clip}
 .fcard h3{margin-top:26px;font-size:clamp(28px,2.6vw,38px)}
 .fcard p{margin-top:12px;color:var(--stone);max-width:540px}
 @media (max-width:760px){.fcards{grid-template-columns:1fr}}
+
+/* ===== v9 ===== */
+/* Hero: tlačítka vlevo pod textem, nižší výška */
+.hero{height:auto;min-height:clamp(460px,64svh,680px)}
+.hero.home{min-height:clamp(560px,86svh,880px)}
+.hero.page{height:auto;min-height:clamp(440px,60svh,640px)}
+.hero-content{grid-template-columns:1fr;padding-top:calc(var(--header-h) + 48px);padding-bottom:clamp(48px,8vh,88px)}
+.hero-actions{margin-top:32px;display:flex;flex-wrap:wrap;gap:12px}
+.btn-light{background:#fff;border-color:#fff;color:var(--ink)}
+.on-image .btn-light:hover{background:transparent;color:#fff;border-color:#fff}
+.hero-links{margin-top:22px}
+@media (max-width:760px){
+  .hero.home{min-height:0;height:auto}
+  .hero.home .hero-content{padding-top:calc(var(--header-h) + 90px)}
+  .hero.page{min-height:0}
+  .hero.page .hero-content{padding-top:calc(var(--header-h) + 70px)}
+  .hero h1,.hero.page h1{font-size:clamp(38px,10.5vw,52px)}
+  .hero .sub{font-size:17px;margin-top:18px}
+  .hero-actions{margin-top:26px}
+  .hero-actions .btn{padding:15px 22px}
+  .hero-links{display:none}
+}
+
+/* Nadpisy bez štítku nad sebou */
+.sec-head h2:first-child,.split h2:first-child,.cols h2:first-child,.faq-grid h2:first-child,.contact-info h2:first-child,.closing h2:first-child,.twin h3:first-child{margin-top:0}
+.intro .statement{margin-top:0}
+
+/* Navigace se šesti položkami */
+.nav{gap:clamp(18px,2vw,32px)}
+@media (max-width:1180px){.nav{display:none}.burger{display:block}}
+
+/* Karty kapitánů */
+.captains{display:grid;grid-template-columns:repeat(3,1fr);gap:clamp(20px,2.4vw,36px)}
+.captain{display:flex;flex-direction:column;text-decoration:none;color:inherit;background:#fff;border:1px solid var(--line);transition:border-color .4s var(--ease),transform .5s var(--ease)}
+.ivory .captain{background:#fff}
+.captain:hover{border-color:var(--ink)}
+.cap-top{position:relative;aspect-ratio:5/4;overflow:hidden;background:var(--midnight);color:#fff;display:flex;align-items:flex-end}
+.cap-top img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;filter:grayscale(1) contrast(1.1) brightness(.8);transition:transform 1.6s var(--ease)}
+.cap-top::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(11,22,33,.25) 0%,rgba(11,22,33,.85) 100%)}
+.captain:hover .cap-top img{transform:scale(1.05)}
+.cap-fig{position:relative;z-index:1;padding:24px 28px}
+.cap-fig strong{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(46px,4.4vw,64px);line-height:1;color:#fff}
+.cap-fig span{display:block;margin-top:8px;font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--brass-light)}
+.cap-body{padding:26px 28px 30px;display:flex;flex-direction:column;flex:1}
+.cap-body h3{font-size:clamp(24px,2.1vw,30px)}
+.cap-body .role{display:block;margin-top:6px;font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--brass-text)}
+.cap-body p{margin-top:12px;color:var(--stone);flex:1}
+.cap-body .line-link{margin-top:22px;align-self:flex-start}
+@media (max-width:960px){.captains{grid-template-columns:1fr 1fr}}
+@media (max-width:640px){
+  .captains{display:flex;overflow-x:auto;scroll-snap-type:x mandatory;gap:14px;margin-inline:-1.5rem;padding:0 1.5rem 8px;scrollbar-width:none}
+  .captains::-webkit-scrollbar{display:none}
+  .captain{flex:0 0 82%;scroll-snap-align:start}
+}
+
+/* Profily kapitánů */
+.profile2{display:grid;grid-template-columns:230px 1fr;gap:clamp(24px,5vw,72px);padding:44px 0;border-top:1px solid var(--line);scroll-margin-top:100px}
+.profile2:last-child{border-bottom:1px solid var(--line)}
+.profile2 .fig strong{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(46px,4.6vw,68px);line-height:1;color:var(--brass-text)}
+.profile2 .fig span{display:block;margin-top:10px;font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);max-width:190px;line-height:1.5}
+.profile2 h3{font-size:clamp(28px,2.8vw,40px)}
+.profile2 .role{display:block;margin-top:6px;font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--brass-text)}
+.profile2 p{margin-top:14px;color:var(--stone);max-width:680px}
+@media (max-width:700px){.profile2{grid-template-columns:1fr;gap:14px}}
+
+/* Přehled služeb */
+.svc-grid{display:grid;grid-template-columns:repeat(4,1fr);border-top:1px solid var(--line);border-left:1px solid var(--line)}
+.svc-grid li{border-right:1px solid var(--line);border-bottom:1px solid var(--line)}
+.svc-grid a{display:block;height:100%;padding:30px 28px;text-decoration:none;color:inherit;transition:background-color .3s}
+.svc-grid a:hover{background:var(--ivory)}
+.svc-grid h3{font-size:24px}
+.svc-grid p{margin-top:8px;color:var(--stone);font-size:16px}
+@media (max-width:960px){.svc-grid{grid-template-columns:1fr 1fr}}
+@media (max-width:520px){.svc-grid{grid-template-columns:1fr}}
+
+/* Stránka služeb */
+.svc{display:grid;grid-template-columns:4fr 7fr;gap:clamp(24px,6vw,96px);padding:44px 0;border-top:1px solid var(--line);scroll-margin-top:100px}
+.svc:last-child{border-bottom:1px solid var(--line)}
+.svc h3{font-size:clamp(28px,2.8vw,38px)}
+.svc .body p{color:var(--stone);max-width:680px}
+.svc .body p + p{margin-top:16px}
+.svc .svc-cta{margin-top:26px}
+@media (max-width:760px){.svc{grid-template-columns:1fr;gap:14px}}
+
+/* Pátá dlaždice ve formuláři */
+.tiles .tile:last-child:nth-child(odd){grid-column:1 / -1}

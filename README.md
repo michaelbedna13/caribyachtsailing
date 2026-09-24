@@ -5,7 +5,7 @@ Statický web (HTML, CSS, JS) bez build kroku.
 ## Struktura
 - `index.html` úvod
 - `destinace/` přehled + `turecko/`, `chorvatsko/`, `karibik/`
-- `pro-firmy/`, `nas-pribeh/`, `jak-to-funguje/` (FAQ + slovník), `kontakt/`, `dekujeme/`, `404.html`
+- `pro-firmy/`, `kapitani/`, `jak-to-funguje/` (FAQ + slovník), `kontakt/`, `dekujeme/`, `404.html`
 - `assets/styles.css` a `assets/main.js` jsou sdílené pro všechny stránky
 - `_redirects` přesměrování starých adres (Netlify), `sitemap.xml`, `robots.txt`
 

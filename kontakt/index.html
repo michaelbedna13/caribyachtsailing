@@ -25,7 +25,7 @@
 <header class="header" id="header">
   <div class="wrap header-inner">
     <a class="logo" href="../" aria-label="Carib Yacht Sailing, úvodní stránka"><span class="l1">Carib Yacht</span><span class="l2">Sailing</span></a>
-    <nav class="nav" aria-label="Hlavní navigace"><a href="../destinace/">Destinace</a><a href="../pro-firmy/">Pro firmy</a><a href="../nas-pribeh/">Náš příběh</a><a href="../jak-to-funguje/">Jak to funguje</a><a href="../kontakt/" aria-current="page">Kontakt</a></nav>
+    <nav class="nav" aria-label="Hlavní navigace"><a href="../destinace/">Destinace</a><a href="../sluzby/">Služby</a><a href="../pro-firmy/">Pro firmy</a><a href="../nas-pribeh/">Náš příběh</a><a href="../jak-to-funguje/">Jak to funguje</a><a href="../kontakt/" aria-current="page">Kontakt</a></nav>
     <div class="header-right">
       <a class="btn" href="../kontakt/">Poptat plavbu</a>
       <button class="burger" type="button" aria-expanded="false" aria-controls="menu" aria-label="Otevřít menu"><span></span></button>
@@ -33,7 +33,7 @@
   </div>
 </header>
 <div class="menu" id="menu" aria-hidden="true">
-  <nav aria-label="Mobilní navigace"><a href="../">Úvod</a><a href="../destinace/">Destinace</a><a href="../pro-firmy/">Pro firmy</a><a href="../nas-pribeh/">Náš příběh</a><a href="../jak-to-funguje/">Jak to funguje</a><a href="../kontakt/">Kontakt</a></nav>
+  <nav aria-label="Mobilní navigace"><a href="../">Úvod</a><a href="../destinace/">Destinace</a><a href="../sluzby/">Služby</a><a href="../pro-firmy/">Pro firmy</a><a href="../nas-pribeh/">Náš příběh</a><a href="../jak-to-funguje/">Jak to funguje</a><a href="../kontakt/">Kontakt</a></nav>
   <div class="menu-foot"><a href="tel:+420737168072">+420 737 168 072</a><a href="mailto:info@caribyacht.cz">info@caribyacht.cz</a></div>
 </div>
 <main id="obsah">
@@ -41,12 +41,11 @@
   <div class="hero-img"><img src="https://images.unsplash.com/photo-1526761122248-c31c93f8b2b9?auto=format&fit=crop&w=2600&q=80" alt="Plachetnice při západu slunce" fetchpriority="high"></div>
   <div class="wrap hero-content">
     <div><span class="kicker">Kontakt</span><h1>Naplánujme vaši plavbu</h1></div>
-    
   </div>
 </section>
 <section class="section ivory"><div class="wrap contact">
   <div class="contact-info">
-    <span class="kicker">Poptávka</span>
+    
     <h2>Napište nám, kam byste chtěli</h2>
     <p class="lead">Stačí pár řádků. Ozveme se s návrhem trasy, lodi a ceny. Raději voláte? Zavolejte přímo kapitánům.</p>
     <dl class="people">
@@ -60,7 +59,7 @@
   <form class="form-card" name="poptavka" method="POST" action="../dekujeme/" data-netlify="true" netlify-honeypot="bot-field">
     <input type="hidden" name="form-name" value="poptavka">
     <p class="hp"><label>Nevyplňujte <input name="bot-field"></label></p>
-    <fieldset class="full"><legend>O co máte zájem?</legend><div class="tiles"><div class="tile"><input type="radio" name="typ" id="t0" value="Soukromá plavba" data-key="soukroma" checked><label for="t0"><strong>Soukromá plavba</strong><span>S rodinou nebo přáteli</span></label></div><div class="tile"><input type="radio" name="typ" id="t1" value="Firemní plavba" data-key="firemni"><label for="t1"><strong>Firemní plavba</strong><span>Teambuilding, regata, akce pro klienty</span></label></div><div class="tile"><input type="radio" name="typ" id="t2" value="Kapitánský kurz" data-key="kurz"><label for="t2"><strong>Kapitánský kurz</strong><span>Příprava na kapitánské zkoušky</span></label></div><div class="tile"><input type="radio" name="typ" id="t3" value="Pronájem lodi" data-key="pronajem"><label for="t3"><strong>Pronájem lodi</strong><span>Bez kapitána nebo ve flotile</span></label></div></div></fieldset>
+    <fieldset class="full"><legend>O co máte zájem?</legend><div class="tiles"><div class="tile"><input type="radio" name="typ" id="t0" value="Soukromá plavba" data-key="soukroma" checked><label for="t0"><strong>Soukromá plavba</strong><span>S rodinou nebo přáteli</span></label></div><div class="tile"><input type="radio" name="typ" id="t1" value="Firemní plavba" data-key="firemni"><label for="t1"><strong>Firemní plavba</strong><span>Teambuilding, regata, akce pro klienty</span></label></div><div class="tile"><input type="radio" name="typ" id="t2" value="Kapitánský kurz" data-key="kurz"><label for="t2"><strong>Kapitánský kurz</strong><span>Příprava na kapitánské zkoušky</span></label></div><div class="tile"><input type="radio" name="typ" id="t3" value="Pronájem lodi" data-key="pronajem"><label for="t3"><strong>Pronájem lodi</strong><span>Bez kapitána nebo ve flotile</span></label></div><div class="tile"><input type="radio" name="typ" id="t4" value="Další služby" data-key="jine"><label for="t4"><strong>Další služby</strong><span>Kontrola lodi, koupě lodi, přeplavba</span></label></div></div></fieldset>
     <div class="field"><label for="f1">Jméno a příjmení <span class="req" aria-hidden="true">*</span></label><input id="f1" name="jmeno" autocomplete="name" required></div>
     <div class="field"><label for="f2">E-mail <span class="req" aria-hidden="true">*</span></label><input id="f2" name="email" type="email" autocomplete="email" required></div>
     <div class="field"><label for="f6">Telefon</label><input id="f6" name="telefon" type="tel" autocomplete="tel"></div>
@@ -77,10 +76,10 @@
     <div class="footer-grid">
       <div>
         <a class="logo" href="../"><span class="l1">Carib Yacht</span><span class="l2">Sailing</span></a>
-        <p class="about">Soukromé a firemní plavby s vlastními kapitány. Rodinná jachtařská tradice od roku 1974.</p>
+        <p class="about">Soukromé a firemní plavby s vlastními kapitány. Na moři od roku 1974.</p>
       </div>
       <div><h4>Destinace</h4><ul><li><a href="../destinace/stredomori/">Středomoří</a></li><li><a href="../destinace/severni-more/">Severní moře</a></li><li><a href="../destinace/karibik/">Karibik</a></li><li><a href="../destinace/vzdalena-more/">Vzdálená moře</a></li></ul></div>
-      <div><h4>Informace</h4><ul><li><a href="../pro-firmy/">Pro firmy</a></li><li><a href="../nas-pribeh/">Náš příběh</a></li><li><a href="../jak-to-funguje/">Jak to funguje</a></li><li><a href="../jak-to-funguje/#slovnik">Jachtařský slovník</a></li></ul></div>
+      <div><h4>Informace</h4><ul><li><a href="../sluzby/">Služby</a></li><li><a href="../pro-firmy/">Pro firmy</a></li><li><a href="../nas-pribeh/">Náš příběh</a></li><li><a href="../jak-to-funguje/">Jak to funguje</a></li><li><a href="../jak-to-funguje/#slovnik">Jachtařský slovník</a></li></ul></div>
       <div><h4>Kontakt</h4><ul><li><a href="tel:+420737168072">+420 737 168 072</a></li><li><a href="mailto:info@caribyacht.cz">info@caribyacht.cz</a></li><li><address>Šeříková 32<br>637 00 Brno-Jundrov</address></li></ul></div>
     </div>
     <div class="footer-bottom"><span>© <span id="y">2026</span> Carib Yacht Sailing, s.r.o.</span><span>Ilustrační fotografie: Unsplash</span></div>

@@ -2,7 +2,16 @@
 # Netlify přesměrování neuplatní, pokud na adrese existuje soubor, takže nové stránky mají přednost.
 # Řádky pod komentářem OVĚŘIT je potřeba zkontrolovat proti starému webu nebo Google Search Console.
 
-/sluzby/                                 /jak-to-funguje/                        301
+/sluzby/rekreacni-plavby/                /sluzby/#rekreacni-plavby               301
+/sluzby/sportovni-plavby/                /sluzby/#sportovni-plavby               301
+/sluzby/poradani-regat-a-flotilovych-plaveb/  /sluzby/#regaty-a-flotily     301
+/sluzby/provadeni-technickych-kontrol/   /sluzby/#technicke-kontroly             301
+/sluzby/priprava-jachet-a-poradenstvi-pri-koupi/  /sluzby/#poradenstvi-pri-koupi  301
+/sluzby/preplavby-lodi/                  /sluzby/#preplavby-lodi                 301
+/sluzby/pronajem-lodi/                   /sluzby/#pronajem-lodi                  301
+/sluzby/kurzy-jachtingu/                 /sluzby/#kurzy-jachtingu                301
+/kategorie/sluzby/teambuilding-na-jachte/*  /pro-firmy/                          301
+/kategorie/*                             /                                       301
 /kapitani/                               /nas-pribeh/                            301
 /teambuilding-na-jachte/                 /pro-firmy/                             301
 /plavby-v-tureckych-vodach/              /destinace/stredomori/turecko/          301
