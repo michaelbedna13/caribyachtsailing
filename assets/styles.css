@@ -667,3 +667,48 @@ body{overflow-x:clip}
   .process{gap:28px}
 }
 .sr-only{position:absolute;width:1px;height:1px;overflow:hidden;clip:rect(0 0 0 0);white-space:nowrap}
+
+/* ===== v11 ===== */
+/* Kam s týmem: na desktopu se sekce přišpendlí a loď pluje při scrollu */
+@media (min-width:761px){
+  .voyage{height:240vh;padding:0}
+  .voyage > .wrap{position:sticky;top:0;min-height:100vh;display:flex;flex-direction:column;justify-content:center;padding:110px 0 60px}
+  .voyage .voyage-map{margin-top:clamp(28px,4vh,56px)}
+}
+
+/* Banner Plavba na míru */
+.bespoke-banner .chips{margin-top:26px;display:flex;flex-wrap:wrap;gap:8px}
+.bespoke-banner .chips li{padding:8px 14px;border:1px solid rgba(255,255,255,.45);font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:#fff;background:rgba(6,13,20,.25)}
+.bespoke-banner h2{max-width:16ch}
+
+/* Náš příběh: úvodní linka 1974 až 2008 */
+.origin-lead{font-family:var(--serif);font-size:clamp(26px,3vw,40px);line-height:1.3;max-width:26ch;margin:0 auto;text-align:center}
+.origin-line{margin-top:clamp(48px,6vw,80px);display:grid;grid-template-columns:auto 1fr auto;align-items:end;gap:clamp(20px,3vw,40px)}
+.o-end strong{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(64px,9vw,140px);line-height:.9;color:var(--ink)}
+.o-end span{display:block;margin-top:14px;font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);max-width:200px;line-height:1.5}
+.o-end:last-child{text-align:right}
+.o-end:last-child span{margin-left:auto}
+.o-mid{position:relative;height:90px;margin-bottom:46px}
+.o-rope{position:absolute;left:0;right:0;bottom:24px;border-top:2px dashed var(--brass)}
+.o-boat{position:absolute;bottom:14px;left:0;width:54px;height:54px;animation:osail 14s ease-in-out infinite alternate}
+@keyframes osail{from{left:0}to{left:calc(100% - 54px)}}
+.o-years{position:absolute;left:50%;bottom:-34px;transform:translateX(-50%);white-space:nowrap;font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--brass-text)}
+.o-boats{margin-top:clamp(56px,7vw,90px);text-align:center;font-family:var(--serif);font-size:clamp(22px,2.2vw,30px)}
+.o-boats span{display:block;margin-bottom:10px;font-family:var(--sans);font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--stone)}
+@media (max-width:760px){
+  .origin-line{grid-template-columns:1fr;text-align:center;gap:10px}
+  .o-end:last-child{text-align:center}.o-end span,.o-end:last-child span{margin:10px auto 0}
+  .o-mid{height:90px;margin:14px 0 40px}
+}
+@media (prefers-reduced-motion:reduce){.o-boat{animation:none;left:calc(50% - 27px)}}
+
+/* Náš příběh: loď pluje podél kapitol */
+.story-track{position:relative;padding-left:130px}
+.st-svg{position:absolute;left:0;top:0;width:100px;height:100%;overflow:visible;color:var(--ink)}
+.st-route{fill:none;stroke:var(--line);stroke-width:1.5;stroke-dasharray:4 8}
+.st-trail{fill:none;stroke:var(--brass);stroke-width:2}
+.st-dot{fill:#fff;stroke:#B9BEC2;stroke-width:1.5;transition:fill .4s,stroke .4s}
+.st-dot.on{fill:var(--brass);stroke:var(--brass)}
+.chapter .year{transition:color .5s}
+.chapter:not(.on) .year{color:#B9AE9A}
+@media (max-width:760px){.story-track{padding-left:54px}.st-svg{width:40px}}

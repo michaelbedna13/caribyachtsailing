@@ -140,8 +140,8 @@ document.querySelectorAll('[data-voyage]').forEach(function(box){
   }
   function tick(){
     if(!state) return;
-    var r=box.getBoundingClientRect(), vh=window.innerHeight;
-    var p=reduce?1:Math.max(0,Math.min(1,(vh*.85-r.top)/(r.height+vh*.35)));
+    var r=(window.innerWidth>760?box.closest('.voyage'):box).getBoundingClientRect(), vh=window.innerHeight;
+    var sticky=window.innerWidth>760, p=reduce?1:(sticky?Math.max(0,Math.min(1,-r.top/Math.max(1,r.height-vh))):Math.max(0,Math.min(1,(vh*.85-r.top)/(r.height+vh*.35))));
     var f=.02+.96*p, pt=state.route.getPointAtLength(state.L*f), pt2=state.route.getPointAtLength(Math.min(state.L,state.L*f+2));
     var ang=state.vertical?0:Math.atan2(pt2.y-pt.y,pt2.x-pt.x)*180/Math.PI*.4;
     state.boat.setAttribute('transform','translate('+pt.x+' '+(pt.y-6)+') rotate('+ang.toFixed(1)+')');
@@ -150,5 +150,40 @@ document.querySelectorAll('[data-voyage]').forEach(function(box){
   }
   var q=0; window.addEventListener('scroll',function(){ if(!q) q=requestAnimationFrame(function(){q=0;tick();}); },{passive:true});
   window.addEventListener('resize',setup);
+  setup();
+});
+
+// Náš příběh: loď pluje podél kapitol
+document.querySelectorAll('[data-story]').forEach(function(track){
+  var svg=track.querySelector('.st-svg'), route=svg.querySelector('.st-route'), trail=svg.querySelector('.st-trail'), dots=svg.querySelector('.st-dots'), boat=svg.querySelector('.vm-boat');
+  var chapters=[].slice.call(track.querySelectorAll('.chapter')), NS='http://www.w3.org/2000/svg', L=0, table=[], pts=[], H=0;
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function setup(){
+    H=track.offsetHeight; var W=svg.getBoundingClientRect().width||80;
+    svg.setAttribute('viewBox','0 0 '+W+' '+H);
+    pts=[{x:W*.5,y:0}];
+    chapters.forEach(function(ch,i){ pts.push({x:W*(i%2?.72:.28), y:ch.offsetTop+ch.offsetHeight/2}); });
+    pts.push({x:W*.5,y:H});
+    var d='M'+pts[0].x+' '+pts[0].y;
+    for(var i=1;i<pts.length;i++){ var a=pts[i-1], b=pts[i], m=(b.y-a.y)/2; d+=' C'+a.x+' '+(a.y+m)+' '+b.x+' '+(b.y-m)+' '+b.x+' '+b.y; }
+    route.setAttribute('d',d); trail.setAttribute('d',d);
+    L=route.getTotalLength(); trail.style.strokeDasharray=L;
+    table=[]; for(var k=0;k<=240;k++){ var l=L*k/240; table.push([route.getPointAtLength(l).y,l]); }
+    dots.innerHTML='';
+    pts.slice(1,-1).forEach(function(pt){ var c=document.createElementNS(NS,'circle'); c.setAttribute('class','st-dot'); c.setAttribute('cx',pt.x); c.setAttribute('cy',pt.y); c.setAttribute('r',6); dots.appendChild(c); });
+    tick();
+  }
+  function lenAtY(y){ for(var k=1;k<table.length;k++){ if(table[k][0]>=y){ var a=table[k-1],b=table[k],t=(y-a[0])/Math.max(.001,b[0]-a[0]); return a[1]+(b[1]-a[1])*t; } } return L; }
+  function tick(){
+    if(!L) return;
+    var r=track.getBoundingClientRect(), y=reduce?H:Math.max(0,Math.min(H,window.innerHeight*.55-r.top));
+    var l=lenAtY(y), pt=route.getPointAtLength(l);
+    boat.setAttribute('transform','translate('+pt.x+' '+(pt.y-6)+')');
+    trail.style.strokeDashoffset=L-l;
+    var ds=dots.querySelectorAll('.st-dot');
+    chapters.forEach(function(ch,i){ var on=pts[i+1].y<=y+4; ch.classList.toggle('on',on); if(ds[i]) ds[i].classList.toggle('on',on); });
+  }
+  var q=0; window.addEventListener('scroll',function(){ if(!q) q=requestAnimationFrame(function(){q=0;tick();}); },{passive:true});
+  window.addEventListener('resize',setup); window.addEventListener('load',setup);
   setup();
 });
