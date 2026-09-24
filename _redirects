@@ -1,0 +1,23 @@
+# Přesměrování adres ze starého webu (301 zachová pozice ve vyhledávání)
+# Adresy označené OVĚŘIT je potřeba zkontrolovat proti starému webu nebo Google Search Console
+
+/sluzby/                        /jak-to-funguje/            301
+/teambuilding-na-jachte/        /pro-firmy/                 301
+/plavby-v-tureckych-vodach/     /destinace/turecko/         301
+# OVĚŘIT, zda stará adresa existovala:
+/plavba-po-karibskem-mori/      /destinace/karibik/         301
+/fendr/                         /jak-to-funguje/#slovnik    301
+# OVĚŘIT, zda stará adresa existovala:
+/bezan/			/jak-to-funguje/#slovnik    301
+# OVĚŘIT, zda stará adresa existovala:
+/bermudsky-yawl/			/jak-to-funguje/#slovnik    301
+# OVĚŘIT, zda stará adresa existovala:
+/bermudsky-slup/			/jak-to-funguje/#slovnik    301
+/tagy/*                         /                           301
+/2014/*                         /                           301
+/2016/*                         /                           301
+/2017/*                         /                           301
+/2018/*                         /                           301
+/2019/*                         /                           301
+/2020/*                         /                           301
+/2022/*                         /                           301

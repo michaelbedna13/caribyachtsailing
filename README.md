@@ -1,2 +1,24 @@
-# caribyachtsailing
-Carib Yascht Sailing web
+# Carib Yacht Sailing, web v4
+
+Statický web (HTML, CSS, JS) bez build kroku.
+
+## Struktura
+- `index.html` úvod
+- `destinace/` přehled + `turecko/`, `chorvatsko/`, `karibik/`
+- `pro-firmy/`, `kapitani/`, `jak-to-funguje/` (FAQ + slovník), `kontakt/`, `dekujeme/`, `404.html`
+- `assets/styles.css` a `assets/main.js` jsou sdílené pro všechny stránky
+- `_redirects` přesměrování starých adres (Netlify), `sitemap.xml`, `robots.txt`
+
+## Lokální náhled
+Odkazy vedou na složky, proto web otevírej přes lokální server, ne dvojklikem:
+`npx serve .` nebo `python3 -m http.server`
+
+## Nasazení
+Repozitář na GitHubu připojit k Netlify (build command prázdný, publish directory `.`).
+Formulář na /kontakt/ funguje přes Netlify Forms automaticky.
+
+## Nová destinace
+Zkopírovat složku `destinace/turecko/`, upravit texty a přidat kartu na úvod, do `destinace/index.html` a do `sitemap.xml`.
+
+## Fotky
+Zatím odkazy na Unsplash. Vlastní fotky uložit do `assets/img/` ve formátu WebP a přepsat `src`.
