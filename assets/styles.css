@@ -899,3 +899,24 @@ a,button,summary,label{touch-action:manipulation}
   .facts div:nth-child(3){padding-left:0}
   .facts dd{font-size:19px}
 }
+
+/* ===== v18: stránka Služby ===== */
+/* Skupina služeb: velká fotka zůstává stát, vedle ní seznam; skupiny se střídají stranami */
+.svc-group{display:grid;grid-template-columns:5fr 6fr;gap:clamp(48px,7vw,120px);align-items:start}
+.svc-group.rev{grid-template-columns:6fr 5fr}
+.svc-group.rev .svc-img{order:2}
+.svc-img{position:sticky;top:110px;aspect-ratio:4/5;max-height:calc(100vh - 150px);overflow:hidden}
+.svc-img img{width:100%;height:100%;object-fit:cover}
+.svc-head{display:flex;align-items:baseline;gap:clamp(18px,2vw,28px);padding-bottom:clamp(24px,3.4vh,36px)}
+.svc-no{font-family:var(--serif);font-size:clamp(30px,2.6vw,40px);line-height:1;color:var(--brass-text)}
+.svc-head h2{font-size:clamp(32px,min(4.2vw,6.6vh),60px)}
+.svc-list .svc{display:block;padding:clamp(26px,4vh,40px) 0;scroll-margin-top:100px}
+.svc-list .svc:last-child{border-bottom:1px solid var(--line)}
+.svc-list .svc h3{font-size:clamp(26px,2.4vw,34px)}
+.svc-list .svc .body{margin-top:14px}
+.svc-list .svc .svc-cta{margin-top:22px}
+@media (max-width:900px){
+  .svc-group,.svc-group.rev{grid-template-columns:1fr;gap:36px}
+  .svc-group.rev .svc-img{order:0}
+  .svc-img{position:relative;top:0;aspect-ratio:16/10;max-height:none}
+}
