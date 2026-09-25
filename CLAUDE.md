@@ -13,6 +13,10 @@ Statický vícestránkový web (HTML, CSS, JS) bez build kroku. Hostováno na Gi
 - Barvy jsou jako proměnné v `assets/styles.css` (:root): midnight, ivory, brass. Nové barvy nepřidávat.
 - Prémiový, vzdušný styl: velké fotky, tenké linky, hodně prostoru. Žádné kartičky se stíny, ikonky v kolečkách, barevné přechody ani štítky typu „Nejčastější volba“. Výzvy k akci vždy jako tlačítka (.btn nebo .line-link).
 - Všechny stránky musí fungovat na mobilu i desktopu.
+- Hero sekce mají tři typy, jiné nevymýšlet:
+  1. Úvod: fotka přes celou obrazovku (`.hero.home`).
+  2. Zážitkové stránky (destinace, oblasti, detaily destinací, Pro firmy, Náš příběh): fotka (`.hero.page`), vždy nadpisek, nadpis, jedna věta podtitulku a nejvýš jedno tlačítko.
+  3. Informační stránky (Služby, Jak to funguje, Kontakt, Děkujeme, 404): textová hlavička bez fotky (`.page-head`), nadpisek, nadpis, podtitulek, případně řada odkazů na části stránky.
 
 ## Struktura
 - Sdílené styly a skript: `assets/styles.css`, `assets/main.js`. Hlavička a patička jsou na každé stránce stejné, při změně upravit všude.
