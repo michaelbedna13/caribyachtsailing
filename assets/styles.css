@@ -444,8 +444,6 @@ body{overflow-x:clip}
 .car-track:focus-visible{outline:1px solid var(--brass);outline-offset:-2px}
 .car-track .dcard{flex:0 0 var(--cw);scroll-snap-align:center;transform:scale(var(--s,1));opacity:var(--o,1);transform-origin:50% 40%;will-change:transform,opacity}
 .car-track .dcard .kicker,.car-track .dcard p,.car-track .dcard .line-link{opacity:var(--t,1)}
-.car-track .dcard .img{transition:box-shadow .5s var(--ease)}
-.car-track .dcard.is-active .img{box-shadow:0 44px 60px -36px rgba(11,22,33,.6)}
 .car-track img{pointer-events:none;-webkit-user-drag:none}
 .car-ui{margin-top:36px;display:flex;align-items:center;gap:32px}
 .car-count{font-size:14px;letter-spacing:.14em;color:var(--stone);min-width:72px}
