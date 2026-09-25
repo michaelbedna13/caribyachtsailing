@@ -645,6 +645,7 @@ body{overflow-x:clip}
 .vm-label{font-family:var(--sans);font-size:13px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;fill:rgba(255,255,255,.55);transition:fill .4s}
 .vm-stop.on .vm-label{fill:#fff}
 .vm-boat{color:#fff}
+.st-svg .vm-boat{color:var(--ink)}
 .vm-bob{animation:vmbob 2.8s ease-in-out infinite}
 @keyframes vmbob{50%{transform:translateY(-3px) rotate(-2deg)}}
 @media (max-width:760px){.voyage .vm-h{display:none}.voyage .vm-v{display:block;max-width:300px}.vm-label{font-size:15px}}
