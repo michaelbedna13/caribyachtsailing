@@ -2,6 +2,29 @@
 <html lang="cs">
 <head>
 <meta charset="utf-8">
+<script>
+// Přesměrování celých skupin starých adres. GitHub Pages neumí 301, proto to řeší 404 stránka skriptem.
+// Jednotlivé staré adresy mají vlastní přesměrovací stránku ve své složce (např. kapitani/index.html).
+(function(){
+  var p=location.pathname.toLowerCase(), rules=[
+  ["/kategorie/sluzby/teambuilding-na-jachte/","/pro-firmy/"],
+  ["/kategorie/","/"],
+  ["/destinace/stredomori/","/destinace/stredomori/"],
+  ["/destinace/severni-more/","/destinace/severni-more/"],
+  ["/destinace/karibik/","/destinace/karibik/"],
+  ["/tagy/","/"],
+  ["/2014/","/"],
+  ["/2015/","/"],
+  ["/2016/","/"],
+  ["/2017/","/"],
+  ["/2018/","/"],
+  ["/2019/","/"],
+  ["/2020/","/"],
+  ["/2022/","/"]
+  ];
+  for(var i=0;i<rules.length;i++){ if(p.indexOf(rules[i][0])===0&&p!==rules[i][1]){ location.replace(rules[i][1]); return; } }
+})();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Stránka nenalezena | Carib Yacht Sailing</title>
 <meta name="description" content="Stránka nenalezena.">
@@ -51,9 +74,9 @@
         <a class="logo" href="/"><span class="l1">Carib Yacht</span><span class="l2">Sailing</span></a>
         <p class="about">Soukromé a&nbsp;firemní plavby s&nbsp;vlastními kapitány. Na moři od roku 1974.</p>
       </div>
-      <div><h4>Destinace</h4><ul><li><a href="/destinace/stredomori/">Středomoří</a></li><li><a href="/destinace/severni-more/">Severní moře</a></li><li><a href="/destinace/karibik/">Karibik</a></li><li><a href="/destinace/vzdalena-more/">Vzdálená moře</a></li></ul></div>
-      <div><h4>Informace</h4><ul><li><a href="/sluzby/">Služby</a></li><li><a href="/pro-firmy/">Pro firmy</a></li><li><a href="/nas-pribeh/">Náš příběh</a></li><li><a href="/jak-to-funguje/">Jak to funguje</a></li><li><a href="/jak-to-funguje/#slovnik">Jachtařský slovník</a></li></ul></div>
-      <div><h4>Kontakt</h4><ul><li><a href="tel:+420737168072">+420 737 168 072</a></li><li><a href="mailto:info@caribyacht.cz">info@caribyacht.cz</a></li><li><address>Šeříková 32<br>637 00 Brno-Jundrov</address></li></ul></div>
+      <div><h2>Destinace</h2><ul><li><a href="/destinace/stredomori/">Středomoří</a></li><li><a href="/destinace/severni-more/">Severní moře</a></li><li><a href="/destinace/karibik/">Karibik</a></li><li><a href="/destinace/vzdalena-more/">Vzdálená moře</a></li></ul></div>
+      <div><h2>Informace</h2><ul><li><a href="/sluzby/">Služby</a></li><li><a href="/pro-firmy/">Pro firmy</a></li><li><a href="/nas-pribeh/">Náš příběh</a></li><li><a href="/jak-to-funguje/">Jak to funguje</a></li><li><a href="/jak-to-funguje/#slovnik">Jachtařský slovník</a></li></ul></div>
+      <div><h2>Kontakt</h2><ul><li><a href="tel:+420737168072">+420 737 168 072</a></li><li><a href="mailto:info@caribyacht.cz">info@caribyacht.cz</a></li><li><address>Šeříková 32<br>637 00 Brno-Jundrov</address></li></ul></div>
     </div>
     <div class="footer-bottom"><span>© <span id="y">2026</span> Carib Yacht Sailing, s.r.o.</span><span>Ilustrační fotografie: Unsplash</span></div>
   </div>

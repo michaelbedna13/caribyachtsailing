@@ -80,7 +80,8 @@ document.querySelectorAll('[data-carousel]').forEach(function(c){
   btns.forEach(function(b){b.addEventListener('click',function(){animateTo(Math.max(0,Math.min(cards.length-1,active+parseInt(b.dataset.dir,10))));});});
   track.addEventListener('keydown',function(e){ if(e.key==='ArrowRight'){e.preventDefault();animateTo(active+1);} if(e.key==='ArrowLeft'){e.preventDefault();animateTo(active-1);} });
   window.addEventListener('resize',function(){ var a=active; measure(); track.scrollLeft=centers[a]-half; render(); });
-  cards.forEach(function(card,i){ card.addEventListener('click',function(e){ if(i!==active){e.preventDefault();animateTo(i);} }); });
+  // Klik myší na boční kartu ji jen přisune doprostřed, Enter z klávesnice (detail 0) vždy otevře odkaz
+  cards.forEach(function(card,i){ card.addEventListener('click',function(e){ if(i!==active&&e.detail>0){e.preventDefault();animateTo(i);} }); });
 
   // Tažení myší s setrvačností
   var down=false, moved=false, startX=0, startL=0, lastX=0, lastT=0, vel=0, targetL=0, dragRaf=0;
