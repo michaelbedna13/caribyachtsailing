@@ -95,7 +95,7 @@ a,button,summary,label{touch-action:manipulation}
 .burger[aria-expanded="true"] span{background:transparent}
 .burger[aria-expanded="true"] span::before{transform:translateY(8px) rotate(45deg)}
 .burger[aria-expanded="true"] span::after{transform:translateY(-8px) rotate(-45deg)}
-.menu{position:fixed;inset:0;z-index:99;background:var(--midnight);color:#fff;display:flex;flex-direction:column;justify-content:center;padding:calc(var(--header-h) + 20px) 32px calc(40px + env(safe-area-inset-bottom));opacity:0;visibility:hidden;transition:opacity .5s var(--ease),visibility .5s}
+.menu{position:fixed;inset:0;z-index:99;overflow-y:auto;overscroll-behavior:contain;background:var(--midnight);color:#fff;display:flex;flex-direction:column;justify-content:center;padding:calc(var(--header-h) + 20px) 32px calc(40px + env(safe-area-inset-bottom));opacity:0;visibility:hidden;transition:opacity .5s var(--ease),visibility .5s}
 .menu.open{opacity:1;visibility:visible}
 .menu nav a{display:block;font-family:var(--serif);font-size:clamp(30px,8vw,46px);line-height:1.45;text-decoration:none}
 .menu .menu-foot{margin-top:48px;padding-top:28px;border-top:1px solid var(--line-d);display:grid;gap:10px;font-size:14px;letter-spacing:.08em}
@@ -531,7 +531,7 @@ a,button,summary,label{touch-action:manipulation}
 .o-end:last-child span{margin-left:auto}
 .o-mid{position:relative;height:90px;margin-bottom:46px}
 .o-rope{position:absolute;left:0;right:0;bottom:24px;border-top:2px dashed var(--brass)}
-.o-boat{position:absolute;bottom:14px;left:0;width:54px;height:54px;animation:osail 14s ease-in-out infinite alternate}
+.o-boat{position:absolute;bottom:14px;left:0;width:54px;height:54px;animation:osail 14s ease-in-out 2 alternate forwards}
 @keyframes osail{from{left:0}to{left:calc(100% - 54px)}}
 .o-years{position:absolute;left:50%;bottom:-34px;transform:translateX(-50%);white-space:nowrap;font-size:12px;font-weight:500;letter-spacing:.16em;text-transform:uppercase;color:var(--brass-text)}
 .o-boats{margin-top:clamp(40px,7vh,90px);text-align:center;font-family:var(--serif);font-size:clamp(22px,2.2vw,30px)}
@@ -550,7 +550,7 @@ a,button,summary,label{touch-action:manipulation}
 .chapter-img{aspect-ratio:5/4;overflow:hidden}
 .chapter-img img{width:100%;height:100%;object-fit:cover}
 .chapter .year{display:block;font-family:var(--serif);font-size:clamp(56px,7vw,104px);line-height:1;color:var(--brass-text);transition:color .5s}
-.chapter:not(.on) .year{color:#B9AE9A}
+.chapter:not(.on) .year{color:#9C8E75}
 .chapter h3{margin-top:16px;font-size:clamp(30px,3vw,42px)}
 .chapter p{margin-top:16px;color:var(--stone);max-width:520px}
 .story-track{position:relative;padding-left:130px}
@@ -603,7 +603,8 @@ a,button,summary,label{touch-action:manipulation}
 
 /* Pás destinací: pomalu ubíhající názvy moří, dekorativní (aria-hidden) */
 .marquee{margin:clamp(56px,9vh,104px) calc(50% - 50vw) 0;padding-bottom:2px;overflow:hidden;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 10'%3E%3Cpath d='M0 5 Q10 1 20 5 T40 5' fill='none' stroke='%23121C25' stroke-opacity='.22' stroke-width='1'/%3E%3C/svg%3E") repeat-x left bottom/40px 10px;-webkit-user-select:none;user-select:none}
-.mq-track{display:flex;width:max-content;animation:mq 90s linear infinite}
+.mq-track{display:flex;width:max-content;animation:mq 90s linear 1 forwards}
+.marquee.done .vm-bob{animation:none}
 .marquee:hover .mq-track,.marquee.off .mq-track{animation-play-state:paused}
 .mq-set{display:flex;align-items:flex-end}
 /* Plachetnice veze název destinace, příď vlevo ve směru plavby */

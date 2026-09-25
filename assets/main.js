@@ -7,6 +7,8 @@
     open=v; menu.classList.toggle('open',v); menu.setAttribute('aria-hidden',!v);
     burger.setAttribute('aria-expanded',v); burger.setAttribute('aria-label',v?'Zavřít menu':'Otevřít menu');
     document.body.style.overflow=v?'hidden':''; onScroll();
+    // Stránka pod otevřeným menu není dosažitelná klávesnicí ani čtečkou
+    document.querySelectorAll('.skip,#obsah,.footer,.header .logo,.header-right .btn').forEach(function(el){ el.inert=v; });
   }
   burger.addEventListener('click',function(){setMenu(!open);});
   menu.addEventListener('click',function(e){if(e.target.closest('a'))setMenu(false);});
@@ -30,6 +32,10 @@ document.querySelectorAll('[data-carousel]').forEach(function(c){
   var track=c.querySelector('.car-track'), cards=[].slice.call(track.querySelectorAll('.dcard'));
   var n=parseInt(c.dataset.count,10)||cards.length;
   var btns=c.querySelectorAll('.car-btn'), count=c.querySelector('.car-count b'), bar=c.querySelector('.car-progress span');
+  // Čtečkám oznámit destinaci až po zastavení, ne při každém posunu
+  var live=document.createElement('span'); live.className='sr-only'; live.setAttribute('aria-live','polite'); c.appendChild(live);
+  var said=-1, sayT=0;
+  function announce(){ clearTimeout(sayT); sayT=setTimeout(function(){ var real=((active%n)+n)%n; if(real===said) return; said=real; var h=cards[active].querySelector('h3'); live.textContent='Destinace '+(real+1)+' z '+n+': '+(h?h.textContent:''); },450); }
   if(!cards.length) return;
   var coarse=window.matchMedia('(pointer: coarse)').matches, reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   var centers=[], half=0, st=1, active=-1, raf=0, anim=0, idle=0;
@@ -49,6 +55,7 @@ document.querySelectorAll('[data-carousel]').forEach(function(c){
       var real=((active%n)+n)%n;
       if(count) count.textContent=String(real+1).padStart(2,'0');
       if(bar){bar.style.width=(100/n)+'%'; bar.style.transform='translateX('+(real*100)+'%)';}
+      if(said>-1||document.activeElement&&c.contains(document.activeElement)) announce();
     }
   }
   function queue(){ if(!raf) raf=requestAnimationFrame(render); }
@@ -278,6 +285,7 @@ document.querySelectorAll('[data-story]').forEach(function(track){
 document.querySelectorAll('.marquee').forEach(function(m){
   if(!('IntersectionObserver' in window)) return;
   new IntersectionObserver(function(en){ m.classList.toggle('off',!en[0].isIntersecting); }).observe(m);
+  var t=m.querySelector('.mq-track'); if(t) t.addEventListener('animationend',function(){ m.classList.add('done'); });
 });
 
 // Plovoucí navigace: zvýrazní část stránky, ve které právě jste
