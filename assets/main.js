@@ -273,3 +273,9 @@ document.querySelectorAll('[data-story]').forEach(function(track){
       });
   });
 })();
+
+// Pás destinací: mimo obrazovku se zastaví, ať zbytečně nevytěžuje procesor
+document.querySelectorAll('.marquee').forEach(function(m){
+  if(!('IntersectionObserver' in window)) return;
+  new IntersectionObserver(function(en){ m.classList.toggle('off',!en[0].isIntersecting); }).observe(m);
+});
