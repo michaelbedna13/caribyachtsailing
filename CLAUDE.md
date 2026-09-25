@@ -17,6 +17,7 @@ Statický vícestránkový web (HTML, CSS, JS) bez build kroku. Hostováno na Gi
   1. Úvod: fotka přes celou obrazovku (`.hero.home`).
   2. Zážitkové stránky (destinace, oblasti, detaily destinací, Pro firmy, Náš příběh): fotka (`.hero.page`), vždy nadpisek, nadpis, jedna věta podtitulku a nejvýš jedno tlačítko.
   3. Informační stránky (Služby, Jak to funguje, Kontakt, Děkujeme, 404): textová hlavička bez fotky (`.page-head`), nadpisek, nadpis, podtitulek, případně řada odkazů na části stránky.
+- Námořní mapa jako pozadí (`.map-bg`, `assets/img/mapa-svetla.svg`, v patičce `mapa-tmava.svg`) používat střídmě: jen Kontakt, úvod Pro firmy a patička. Nepřidávat ji za dlouhé texty.
 
 ## Struktura
 - Sdílené styly a skript: `assets/styles.css`, `assets/main.js`. Hlavička a patička jsou na každé stránce stejné, při změně upravit všude.
