@@ -21,6 +21,8 @@
   } else { els.forEach(function(el){el.classList.add('in');}); }
 
   var y=document.getElementById('y'); if(y) y.textContent=new Date().getFullYear();
+  // Počet let od daného roku (např. <span data-since="1974">), každý rok se přepočítá sám
+  document.querySelectorAll('[data-since]').forEach(function(el){ el.textContent=new Date().getFullYear()-parseInt(el.getAttribute('data-since'),10); });
 })();
 
 // Kolotoč destinací: nekonečné točení, plynulé tažení myší, zvýraznění karty uprostřed
