@@ -881,3 +881,21 @@ a,button,summary,label{touch-action:manipulation}
 @keyframes mq{to{transform:translateX(-50%)}}
 @media (max-width:760px){.mq-track{animation-duration:60s}}
 @media (prefers-reduced-motion:reduce){.mq-track{animation:none}}
+
+/* ===== v17: doladění podstránek ===== */
+/* Úvodní text destinací: řádky kolem 70 znaků místo 90 */
+.cols .body{max-width:680px}
+
+/* Rychlé odkazy v hero: stejná nejmenší velikost jako ostatní popisky (12 px) */
+.hero-links a{font-size:12px}
+
+/* Brass tlačítko: tmavý text, bílý na brass neměl dostatečný kontrast */
+.btn-brass{color:var(--midnight)}
+
+/* Fakta o destinaci na mobilu: hodnoty menší, ať se nelámou do tří řádků */
+@media (max-width:760px){
+  .facts div{padding:20px 14px 20px 0}
+  .facts div + div{padding-left:14px}
+  .facts div:nth-child(3){padding-left:0}
+  .facts dd{font-size:19px}
+}
