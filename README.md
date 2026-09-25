@@ -18,7 +18,7 @@ Repozitář na GitHubu připojit k Netlify (build command prázdný, publish dir
 Formulář na /kontakt/ funguje přes Netlify Forms automaticky.
 
 ## Nová destinace
-Zkopírovat složku `destinace/turecko/`, upravit texty a přidat kartu na úvod, do `destinace/index.html` a do `sitemap.xml`.
+Zkopírovat existující destinaci ve stejné oblasti (např. `destinace/stredomori/turecko/`), upravit texty a přidat kartu na stránku oblasti (např. `destinace/stredomori/index.html`), podle potřeby na úvod a do `sitemap.xml`.
 
 ## Fotky
 Zatím odkazy na Unsplash. Vlastní fotky uložit do `assets/img/` ve formátu WebP a přepsat `src`.
