@@ -866,12 +866,17 @@ a,button,summary,label{touch-action:manipulation}
 
 /* ===== v16: pás destinací ===== */
 /* Pomalu ubíhající názvy moří, dekorativní (aria-hidden), zastaví se pod myší a při omezení animací */
-.marquee{margin:clamp(56px,9vh,104px) calc(50% - 50vw) 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden;-webkit-user-select:none;user-select:none}
+.marquee{margin:clamp(56px,9vh,104px) calc(50% - 50vw) 0;padding-bottom:2px;overflow:hidden;background:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 10'%3E%3Cpath d='M0 5 Q10 1 20 5 T40 5' fill='none' stroke='%23121C25' stroke-opacity='.22' stroke-width='1'/%3E%3C/svg%3E") repeat-x left bottom/40px 10px;-webkit-user-select:none;user-select:none}
 .mq-track{display:flex;width:max-content;animation:mq 90s linear infinite}
 .marquee:hover .mq-track,.marquee.off .mq-track{animation-play-state:paused}
-.mq-set{display:flex;align-items:center}
-.mq-set span{display:block;padding:clamp(22px,2.8vw,36px) clamp(32px,3.6vw,56px);border-left:1px solid var(--line);font-family:var(--serif);font-size:clamp(28px,3.4vw,48px);line-height:1.1;white-space:nowrap;color:var(--ink)}
-.mq-set small{display:block;margin-bottom:12px;font-family:var(--sans);font-size:12px;font-weight:500;letter-spacing:.16em;color:var(--brass-text);font-variant-numeric:tabular-nums}
+.mq-set{display:flex;align-items:flex-end}
+/* Plachetnice veze název destinace, příď vlevo ve směru plavby */
+.mq-set span{display:flex;align-items:flex-end;gap:clamp(14px,1.4vw,20px);padding:clamp(20px,3vw,36px) clamp(48px,6vw,104px) 0 0;text-align:left}
+.mq-boat{flex:none;width:clamp(60px,6vw,88px);height:auto;overflow:visible}
+.mq-set b{display:block;padding-bottom:clamp(12px,1.4vw,18px);font-family:var(--serif);font-weight:400;font-size:clamp(26px,3vw,42px);line-height:1.1;white-space:nowrap;color:var(--ink)}
+.mq-set small{display:block;margin-bottom:10px;font-family:var(--sans);font-size:12px;font-weight:500;letter-spacing:.16em;color:var(--brass-text);font-variant-numeric:tabular-nums}
+.mq-set span:nth-child(3n+2) .vm-bob{animation-delay:-.9s}
+.mq-set span:nth-child(3n) .vm-bob{animation-delay:-1.8s}
 @keyframes mq{to{transform:translateX(-50%)}}
 @media (max-width:760px){.mq-track{animation-duration:60s}}
 @media (prefers-reduced-motion:reduce){.mq-track{animation:none}}
