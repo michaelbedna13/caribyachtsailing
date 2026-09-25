@@ -1058,27 +1058,6 @@ a,button,summary,label{touch-action:manipulation}
 main{overflow-x:clip}
 
 /* ===== v27: Jak to funguje ===== */
-/* Tři způsoby plavby: srovnávací tabulka s tenkými linkami */
-.compare{width:100%;border-collapse:collapse;text-align:left}
-.compare thead td{border:0}
-.compare thead th{padding:0 28px 22px 0;font-family:var(--serif);font-weight:400;font-size:clamp(26px,2.6vw,36px);line-height:1.15;vertical-align:bottom}
-.compare tbody th{width:18%;padding:22px 24px 22px 0;font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);vertical-align:top}
-.compare td{padding:20px 28px 20px 0;border-top:1px solid var(--line);font-size:18px;font-weight:500;line-height:1.5;color:var(--ink);vertical-align:top}
-.compare tbody th{border-top:1px solid var(--line)}
-.compare tbody tr:last-child th,.compare tbody tr:last-child td{border-bottom:1px solid var(--line)}
-.compare .cmp-desc td{font-size:17px;font-weight:400;line-height:1.65;color:var(--stone)}
-@media (max-width:760px){
-  .compare thead{display:none}
-  .compare,.compare tbody,.compare tr,.compare th,.compare td{display:block;width:auto}
-  .compare tr{padding:22px 0 8px;border-top:1px solid var(--line)}
-  .compare tbody tr:last-child{border-bottom:1px solid var(--line)}
-  .compare tbody th,.compare td,.compare tbody tr:last-child th,.compare tbody tr:last-child td{border:0;padding:0}
-  .compare tbody th{margin-bottom:12px}
-  .compare tbody th{width:auto}
-  .compare tbody td,.compare tbody tr:last-child td{padding:0 0 14px}
-  .compare td::before{content:attr(data-mode);display:block;font-family:var(--serif);font-weight:400;font-size:21px;line-height:1.3;color:var(--ink);margin-bottom:2px}
-}
-
 /* Od první zprávy po vyplutí: trasa se čtyřmi zastávkami, jednou se vyplní */
 .journey{position:relative;padding-top:40px}
 .journey::before,.journey::after{content:"";position:absolute;left:6px;top:6px;height:1px;width:calc(var(--end,100%) - 6px)}
