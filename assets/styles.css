@@ -1035,3 +1035,24 @@ a,button,summary,label{touch-action:manipulation}
   .reveal.in{opacity:1}
   .btn:active,.line-link:active,.car-btn:active,a:active > .line-link{transform:none}
 }
+
+/* ===== v26: Destinace, pobřeží oblasti jemně za textem ===== */
+.region h2{margin-top:16px;font-size:clamp(44px,5.4vw,78px)}
+.region h2:first-child{margin-top:0}
+.region h2 a{text-decoration:none}
+.region-text{position:relative;isolation:isolate}
+.region-text::before{content:"";position:absolute;inset:-18% -14%;z-index:-1;pointer-events:none;background:center/cover no-repeat;-webkit-mask-image:radial-gradient(closest-side,#000 55%,transparent);mask-image:radial-gradient(closest-side,#000 55%,transparent)}
+.region-text[data-map="stredomori"]::before{background-image:url("img/oblast-stredomori.svg")}
+.region-text[data-map="severni-more"]::before{background-image:url("img/oblast-severni-more.svg")}
+.region-text[data-map="karibik"]::before{background-image:url("img/oblast-karibik.svg")}
+.region-text[data-map="vzdalena-more"]::before{background-image:url("img/oblast-vzdalena-more.svg")}
+@media (max-width:760px){.region h2{font-size:clamp(38px,11vw,52px)}.region-text::before{inset:-8% -6%}}
+
+/* Plné tlačítko na fotce při najetí zezlátne, nemění se na obrysové */
+.on-image .btn-light:hover,.btn-light:hover{background:var(--brass-light);border-color:var(--brass-light);color:var(--midnight)}
+
+/* Odkaz Přeskočit na obsah: dostatečný kontrast */
+.skip{background:var(--midnight);color:#fff}
+
+/* Mapa za textem nesmí vytvořit vodorovný posuv */
+main{overflow-x:clip}
