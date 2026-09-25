@@ -905,8 +905,7 @@ a,button,summary,label{touch-action:manipulation}
 .svc-group.rev .svc-img{order:2}
 .svc-img{position:sticky;top:110px;aspect-ratio:4/5;max-height:calc(100vh - 150px);overflow:hidden}
 .svc-img img{width:100%;height:100%;object-fit:cover}
-.svc-head{display:flex;align-items:baseline;gap:clamp(18px,2vw,28px);padding-bottom:clamp(24px,3.4vh,36px)}
-.svc-no{font-family:var(--serif);font-size:clamp(30px,2.6vw,40px);line-height:1;color:var(--brass-text)}
+.svc-head{padding-bottom:clamp(24px,3.4vh,36px)}
 .svc-head h2{font-size:clamp(32px,min(4.2vw,6.6vh),60px)}
 .svc-list .svc{display:block;padding:clamp(26px,4vh,40px) 0;scroll-margin-top:100px}
 .svc-list .svc:last-child{border-bottom:1px solid var(--line)}
@@ -918,3 +917,31 @@ a,button,summary,label{touch-action:manipulation}
   .svc-group.rev .svc-img{order:0}
   .svc-img{position:relative;top:0;aspect-ratio:16/10;max-height:none}
 }
+
+/* Lodní výkres místo fotky: tenké linky, při zobrazení se jednou dokreslí */
+.svc-draw{display:grid;place-items:center;padding:clamp(20px,3vw,44px);background:var(--ivory);border:1px solid var(--line)}
+.ivory .svc-draw{background:var(--white)}
+.svc-draw svg{width:100%;height:100%;overflow:visible}
+.svc-draw .dw-step path{fill:none;stroke-dasharray:1;stroke-dashoffset:1}
+.svc-draw.in .dw-step path{animation:dwdraw 2s var(--ease) var(--d,0s) forwards}
+@keyframes dwdraw{to{stroke-dashoffset:0}}
+.dw-line{stroke:var(--ink);stroke-width:1.3;stroke-linejoin:round}
+.dw-thin{stroke:var(--stone);stroke-width:.8}
+.dw-sail{stroke:var(--brass);stroke-width:1.1;stroke-linejoin:round;fill:var(--brass-light)!important;fill-opacity:0}
+.svc-draw.in .dw-step .dw-sail{animation:dwdraw 2s var(--ease) var(--d,0s) forwards,dwfill 1.2s var(--ease) calc(var(--d,0s) + 1.4s) forwards}
+@keyframes dwfill{to{fill-opacity:.28}}
+.dw-note{opacity:0;transition:opacity 1.2s var(--ease) 2.6s}
+.svc-draw.in .dw-note{opacity:1}
+.dw-wl{fill:none;stroke:var(--brass);stroke-width:1;stroke-dasharray:6 5}
+.dw-lead{fill:none;stroke:var(--stone);stroke-width:.6}
+.dw-box{fill:none;stroke:var(--stone);stroke-width:.7}
+.dw-t{font-family:var(--sans);font-size:10px;fill:var(--stone);letter-spacing:.02em}
+.dw-tb{fill:var(--ink);font-weight:500}
+@media (prefers-reduced-motion:reduce){.svc-draw .dw-step path,.svc-draw.in .dw-step path,.svc-draw.in .dw-step .dw-sail{animation:none;stroke-dashoffset:0}.svc-draw .dw-sail{fill-opacity:.28}.dw-note{opacity:1}}
+@media (max-width:900px){.svc-draw{aspect-ratio:auto;padding:24px 20px}.svc-draw svg{height:auto;max-height:70vh}}
+@media (max-width:600px){.svc-draw .dw-lab{display:none}.svc-draw .dw-t{font-size:15px}.svc-draw .dw-box{display:none}.svc-draw .dw-snd{font-size:12px}}
+.dw-course{fill:none;stroke:var(--brass);stroke-width:1.6;stroke-linejoin:round}
+.dw-depth{fill:none;stroke:var(--stone);stroke-width:.6;stroke-dasharray:3 4}
+.dw-wp{fill:var(--brass);stroke:none}
+.dw-snd{font-size:9px;font-style:italic}
+.dw-crs{fill:var(--brass-text);font-weight:500}
