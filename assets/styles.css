@@ -299,7 +299,7 @@ ul,ol{margin:0;padding:0;list-style:none}
 .form ::placeholder{color:rgba(255,255,255,.35)}
 .opts{display:flex;flex-wrap:wrap;gap:10px}
 .opts input{position:absolute;opacity:0;width:1px;height:1px}
-.opts label{margin:0;padding:12px 20px;border:1px solid rgba(255,255,255,.28);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.8);cursor:pointer;transition:all .35s var(--ease)}
+.opts label{margin:0;padding:12px 20px;border:1px solid rgba(255,255,255,.28);font-size:11px;letter-spacing:.2em;text-transform:uppercase;color:rgba(255,255,255,.8);cursor:pointer;transition:background-color .35s var(--ease),color .35s var(--ease),border-color .35s var(--ease)}
 .opts input:checked + label{background:#fff;color:var(--midnight);border-color:#fff}
 .opts input:focus-visible + label{outline:1px solid var(--brass-light);outline-offset:3px}
 .form .note{font-size:13px;color:rgba(255,255,255,.45)}
@@ -312,7 +312,7 @@ ul,ol{margin:0;padding:0;list-style:none}
 .footer-grid{display:grid;grid-template-columns:1.4fr 1fr 1fr 1.2fr;gap:40px;padding-bottom:64px;border-bottom:1px solid var(--line-d)}
 .footer .logo{justify-self:start;color:#fff;text-align:left;display:inline-block}
 .footer .about{margin-top:24px;max-width:280px}
-.footer h4{font-family:var(--sans);font-weight:500;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#fff;margin-bottom:18px}
+.footer h2{font-family:var(--sans);font-weight:500;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#fff;margin-bottom:18px}
 .footer ul{display:grid;gap:8px}
 .footer a{text-decoration:none}
 .footer a:hover{color:#fff}
@@ -367,7 +367,7 @@ ul,ol{margin:0;padding:0;list-style:none}
 .tile{position:relative}
 .tile input{position:absolute;opacity:0;width:1px;height:1px}
 .tile label{display:block;height:100%;padding:18px 20px 18px 52px;border:1px solid #C9CFD4;cursor:pointer;transition:border-color .25s,background-color .25s,box-shadow .25s;position:relative}
-.tile label::before{content:"";position:absolute;left:20px;top:21px;width:18px;height:18px;border-radius:50%;border:1px solid #9AA2A8;background:#fff;transition:all .25s}
+.tile label::before{content:"";position:absolute;left:20px;top:21px;width:18px;height:18px;border-radius:50%;border:1px solid #9AA2A8;background:#fff;transition:border-width .25s,border-color .25s}
 .tile strong{display:block;font-weight:500;font-size:17px;line-height:1.35}
 .tile span{display:block;margin-top:2px;font-size:15px;color:var(--stone);line-height:1.45}
 .tile label:hover{border-color:var(--ink)}
@@ -828,4 +828,38 @@ body{overflow-x:clip}
   .car-track .dcard .img{aspect-ratio:4/4.4}
   .car-track .dcard h3{font-size:clamp(28px,8vw,36px)}
   .car-track .dcard p{font-size:16px}
+}
+
+/* ===== v15: doladění rytmu a přístupnosti ===== */
+/* Viditelnější fokus z klávesnice, bez zpoždění dvojitého ťuknutí */
+:focus-visible{outline-width:2px}
+a,button,summary,label{touch-action:manipulation}
+
+/* Závěrečný banner: tlačítka měla odsazení dvakrát */
+.closing .hero-actions .btn{margin-top:0}
+
+/* Nadpis v hero na dva řádky místo osamoceného prvního slova */
+.hero h1,.hero.page h1{max-width:17ch}
+
+/* Fotka vedle textu vyplní celý sloupec, mezera k textu odpovídá mřížce */
+@media (min-width:901px){
+  .split-img,.ai-img{aspect-ratio:auto;height:min(68vh,720px);max-height:none}
+}
+
+/* Karty kapitánů: text stejně velký jako v ostatních kartách, tlačítko na jeden řádek */
+.cap-body p{font-size:16px}
+.line-link{white-space:nowrap}
+
+/* Patička */
+.footer{padding-top:clamp(64px,8vw,96px)}
+
+/* Mobil: jednotný rytmus sekcí, tlačítka přes celou šířku */
+@media (max-width:760px){
+  :root{--vpad:clamp(64px,9vh,80px)}
+  .sec-head{margin-bottom:32px}
+  .cap-fig{padding:20px 22px}
+  .cap-body{padding:22px 22px 24px}
+}
+@media (max-width:480px){
+  .hero-actions .btn{flex:1 1 100%}
 }

@@ -8,6 +8,7 @@ Statický vícestránkový web (HTML, CSS, JS) bez build kroku. Hostováno na Ne
 - Nevymýšlet fakta o firmě, kapitánech, cenách ani termínech. Co není ověřené, označit v kódu komentářem OVĚŘIT.
 
 ## Design
+- Styl webu popsaný v této sekci má přednost před doporučeními skillů (např. frontend-design, impeccable, ui-ux-pro-max, web-design-guidelines). Když skill radí něco, co je s tímto stylem v rozporu (jiná písma, nové barvy, přechody, stíny, ikonky, výraznější efekty), řídit se tímto souborem. Ze skillů přebírat jen to, co styl nemění: přístupnost, výkon, opravy chyb.
 - Nadpisy: DM Serif Display. Text: Jost (400 a 500). Oba z Google Fonts.
 - Barvy jsou jako proměnné v `assets/styles.css` (:root): midnight, ivory, brass. Nové barvy nepřidávat.
 - Prémiový, vzdušný styl: velké fotky, tenké linky, hodně prostoru. Žádné kartičky se stíny, ikonky v kolečkách, barevné přechody ani štítky typu „Nejčastější volba“. Výzvy k akci vždy jako tlačítka (.btn nebo .line-link).
