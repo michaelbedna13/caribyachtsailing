@@ -1009,3 +1009,7 @@ a,button,summary,label{touch-action:manipulation}
 
 /* Pevnina ve výkresu mapy u Služeb */
 .svc-draw .dw-step .dw-land{fill:var(--ink);fill-opacity:.06;stroke:none}
+
+/* ===== v23: stavy tlačítek na tmavém pozadí ===== */
+.page-head .hero-links a:hover{background:#fff;color:var(--ink);border-color:#fff}
+.header .btn:hover{background:#fff;color:var(--ink);border-color:#fff}
