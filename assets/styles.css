@@ -1056,3 +1056,50 @@ a,button,summary,label{touch-action:manipulation}
 
 /* Mapa za textem nesmí vytvořit vodorovný posuv */
 main{overflow-x:clip}
+
+/* ===== v27: Jak to funguje ===== */
+/* Tři způsoby plavby: srovnávací tabulka s tenkými linkami */
+.compare{width:100%;border-collapse:collapse;text-align:left}
+.compare thead td{border:0}
+.compare thead th{padding:0 28px 22px 0;font-family:var(--serif);font-weight:400;font-size:clamp(26px,2.6vw,36px);line-height:1.15;vertical-align:bottom}
+.compare tbody th{width:18%;padding:22px 24px 22px 0;font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);vertical-align:top}
+.compare td{padding:20px 28px 20px 0;border-top:1px solid var(--line);font-size:18px;font-weight:500;line-height:1.5;color:var(--ink);vertical-align:top}
+.compare tbody th{border-top:1px solid var(--line)}
+.compare tbody tr:last-child th,.compare tbody tr:last-child td{border-bottom:1px solid var(--line)}
+.compare .cmp-desc td{font-size:17px;font-weight:400;line-height:1.65;color:var(--stone)}
+@media (max-width:760px){
+  .compare thead{display:none}
+  .compare,.compare tbody,.compare tr,.compare th,.compare td{display:block;width:auto}
+  .compare tr{padding:22px 0 8px;border-top:1px solid var(--line)}
+  .compare tbody tr:last-child{border-bottom:1px solid var(--line)}
+  .compare tbody th,.compare td,.compare tbody tr:last-child th,.compare tbody tr:last-child td{border:0;padding:0}
+  .compare tbody th{margin-bottom:12px}
+  .compare tbody th{width:auto}
+  .compare tbody td,.compare tbody tr:last-child td{padding:0 0 14px}
+  .compare td::before{content:attr(data-mode);display:block;font-family:var(--serif);font-weight:400;font-size:21px;line-height:1.3;color:var(--ink);margin-bottom:2px}
+}
+
+/* Od první zprávy po vyplutí: trasa se čtyřmi zastávkami, jednou se vyplní */
+.journey{position:relative;padding-top:40px}
+.journey::before,.journey::after{content:"";position:absolute;left:6px;top:6px;height:1px;width:calc(var(--end,100%) - 6px)}
+.journey::before{background:var(--line-d)}
+.journey::after{background:var(--brass-light);transform:scaleX(0);transform-origin:left center;transition:transform 1.8s cubic-bezier(.16,1,.3,1)}
+.journey.in::after{transform:scaleX(1)}
+.journey li{position:relative;padding-top:0;border-top:0;opacity:.5;transition:opacity .6s ease}
+.journey li::after{content:"";position:absolute;left:0;top:-40px;width:13px;height:13px;border-radius:50%;border:1px solid rgba(255,255,255,.4);background:var(--midnight);transition:background-color .5s ease,border-color .5s ease}
+.journey.in li{opacity:1}
+.journey.in li::after{background:var(--brass-light);border-color:var(--brass-light)}
+.journey li:nth-child(1),.journey li:nth-child(1)::after{transition-delay:.15s}
+.journey li:nth-child(2),.journey li:nth-child(2)::after{transition-delay:.6s}
+.journey li:nth-child(3),.journey li:nth-child(3)::after{transition-delay:1.05s}
+.journey li:nth-child(4),.journey li:nth-child(4)::after{transition-delay:1.5s}
+@media (min-width:561px) and (max-width:900px){.process.journey{grid-template-columns:repeat(4,1fr);gap:24px}}
+@media (max-width:560px){
+  .journey{padding-top:0;padding-left:34px}
+  .journey::before,.journey::after{left:6px;top:36px;width:1px;height:calc(var(--endy,100%) - 36px)}
+  .journey::after{transform:scaleY(0);transform-origin:center top}
+  .journey.in::after{transform:scaleY(1)}
+  .journey li{padding:22px 0}
+  .journey li::after{left:-34px;top:30px}
+}
+@media (prefers-reduced-motion:reduce){.journey::after{transform:none!important}.journey li{opacity:1}.journey li::after{background:var(--brass-light);border-color:var(--brass-light)}}
