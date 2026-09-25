@@ -1,6 +1,6 @@
 # Carib Yacht Sailing, web
 
-Statický vícestránkový web (HTML, CSS, JS) bez build kroku. Hostováno na GitHub Pages z tohoto repozitáře, s vlastní doménou caribyacht.cz (soubor `CNAME`).
+Statický vícestránkový web (HTML, CSS, JS) bez build kroku. Hostováno na GitHub Pages z tohoto repozitáře. Vlastní doména caribyacht.cz se napojí později (soubor `CNAME` zatím nepřidávat).
 
 ## Pravidla pro texty
 - Nikdy nepoužívat dlouhou pomlčku (em dash). Místo ní čárka, dvojtečka nebo nová věta.

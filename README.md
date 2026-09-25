@@ -8,7 +8,7 @@ Statický web (HTML, CSS, JS) bez build kroku.
 - `pro-firmy/`, `kapitani/`, `jak-to-funguje/` (FAQ + slovník), `kontakt/`, `dekujeme/`, `404.html`
 - `assets/styles.css` a `assets/main.js` jsou sdílené pro všechny stránky
 - přesměrování starých adres: vlastní složky s přesměrovací stránkou (např. `kapitani/`) a skript v `404.html` pro celé skupiny adres
-- `CNAME` vlastní doména pro GitHub Pages, `.nojekyll`, `sitemap.xml`, `robots.txt`
+- `.nojekyll`, `sitemap.xml`, `robots.txt`
 
 ## Lokální náhled
 Odkazy vedou na složky, proto web otevírej přes lokální server, ne dvojklikem:
@@ -16,7 +16,7 @@ Odkazy vedou na složky, proto web otevírej přes lokální server, ne dvojklik
 
 ## Nasazení
 GitHub Pages: Settings → Pages → Source „Deploy from a branch“, větev `main`, složka `/ (root)`.
-Vlastní doména je v souboru `CNAME` (`caribyacht.cz`). U registrátora domény nastavit DNS:
+Vlastní doména (až bude čas): v nastavení Pages vyplnit Custom domain `caribyacht.cz` (GitHub sám vytvoří soubor `CNAME`) a u registrátora nastavit DNS:
 - `A` záznamy pro `caribyacht.cz`: 185.199.108.153, 185.199.109.153, 185.199.110.153, 185.199.111.153
 - `CNAME` pro `www` na `<uživatel>.github.io`
 
