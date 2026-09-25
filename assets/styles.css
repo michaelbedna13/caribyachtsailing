@@ -990,3 +990,19 @@ a,button,summary,label{touch-action:manipulation}
 .hero.page .hero-content{padding-top:calc(var(--header-h) + 32px)}
 .page-head{min-height:clamp(360px,56svh,560px)}
 @media (max-width:760px){.hero.page h1{font-size:clamp(34px,9.6vw,46px)}.page-head{min-height:clamp(320px,48svh,420px)}}
+
+/* ===== v21: Jak to funguje ===== */
+/* Menší výkresy bez rámečku (panely, plachetnice a katamarán) */
+.svc-draw.dw-plain{padding:0;border:0;background:none;display:block}
+.svc-draw.dw-plain svg{height:auto}
+.panel .dw-plain{margin:-6px 0 22px;max-width:260px}
+.twin .dw-plain{margin-bottom:26px;max-width:420px}
+
+/* Plovoucí navigace po částech stránky */
+.subnav{position:sticky;top:72px;z-index:50;background:rgba(255,255,255,.96);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.subnav .wrap{display:flex;gap:clamp(20px,3vw,40px);overflow-x:auto;scrollbar-width:none}
+.subnav .wrap::-webkit-scrollbar{display:none}
+.subnav a{flex:none;padding:18px 0 16px;font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;text-decoration:none;color:var(--stone);border-bottom:2px solid transparent;transition:color .3s,border-color .3s}
+.subnav a:hover{color:var(--ink)}
+.subnav a[aria-current="true"]{color:var(--ink);border-bottom-color:var(--brass)}
+.subnav ~ .section[id]{scroll-margin-top:130px}

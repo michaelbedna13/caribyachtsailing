@@ -279,3 +279,16 @@ document.querySelectorAll('.marquee').forEach(function(m){
   if(!('IntersectionObserver' in window)) return;
   new IntersectionObserver(function(en){ m.classList.toggle('off',!en[0].isIntersecting); }).observe(m);
 });
+
+// Plovoucí navigace: zvýrazní část stránky, ve které právě jste
+document.querySelectorAll('.subnav').forEach(function(nav){
+  if(!('IntersectionObserver' in window)) return;
+  var links=[].slice.call(nav.querySelectorAll('a[href^="#"]')), box=nav.querySelector('.wrap');
+  var map={}; links.forEach(function(a){ var sec=document.getElementById(a.getAttribute('href').slice(1)); if(sec) map[sec.id]=a; });
+  var io=new IntersectionObserver(function(en){ en.forEach(function(x){ if(!x.isIntersecting) return;
+    links.forEach(function(a){ a.removeAttribute('aria-current'); });
+    var a=map[x.target.id]; a.setAttribute('aria-current','true');
+    box.scrollTo({left:Math.max(0,a.offsetLeft-box.offsetLeft-24),behavior:'smooth'});
+  }); },{rootMargin:'-45% 0px -50% 0px'});
+  Object.keys(map).forEach(function(id){ io.observe(document.getElementById(id)); });
+});
