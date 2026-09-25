@@ -939,4 +939,9 @@ a,button,summary,label{touch-action:manipulation}
 .dw-tb{fill:var(--ink);font-weight:500}
 @media (prefers-reduced-motion:reduce){.svc-draw .dw-step path,.svc-draw.in .dw-step path,.svc-draw.in .dw-step .dw-sail{animation:none;stroke-dashoffset:0}.svc-draw .dw-sail{fill-opacity:.28}.dw-note{opacity:1}}
 @media (max-width:900px){.svc-draw{aspect-ratio:auto;padding:24px 20px}.svc-draw svg{height:auto;max-height:70vh}}
-@media (max-width:600px){.svc-draw .dw-lab{display:none}.svc-draw .dw-t{font-size:15px}.svc-draw .dw-box{display:none}}
+@media (max-width:600px){.svc-draw .dw-lab{display:none}.svc-draw .dw-t{font-size:15px}.svc-draw .dw-box{display:none}.svc-draw .dw-snd{font-size:12px}}
+.dw-course{fill:none;stroke:var(--brass);stroke-width:1.6;stroke-linejoin:round}
+.dw-depth{fill:none;stroke:var(--stone);stroke-width:.6;stroke-dasharray:3 4}
+.dw-wp{fill:var(--brass);stroke:none}
+.dw-snd{font-size:9px;font-style:italic}
+.dw-crs{fill:var(--brass-text);font-weight:500}
