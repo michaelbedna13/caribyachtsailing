@@ -992,11 +992,6 @@ a,button,summary,label{touch-action:manipulation}
 @media (max-width:760px){.hero.page h1{font-size:clamp(34px,9.6vw,46px)}.page-head{min-height:clamp(320px,48svh,420px)}}
 
 /* ===== v21: Jak to funguje ===== */
-/* Menší výkresy bez rámečku (panely, plachetnice a katamarán) */
-.svc-draw.dw-plain{padding:0;border:0;background:none;display:block}
-.svc-draw.dw-plain svg{height:auto}
-.panel .dw-plain{margin:-6px 0 22px;max-width:260px}
-.twin .dw-plain{margin-bottom:26px;max-width:420px}
 
 /* Plovoucí navigace po částech stránky */
 .subnav{position:sticky;top:72px;z-index:50;background:rgba(255,255,255,.96);-webkit-backdrop-filter:blur(8px);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
