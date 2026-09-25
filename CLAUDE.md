@@ -1,6 +1,6 @@
 # Carib Yacht Sailing, web
 
-Statický vícestránkový web (HTML, CSS, JS) bez build kroku. Hostováno na Netlify z tohoto repozitáře.
+Statický vícestránkový web (HTML, CSS, JS) bez build kroku. Hostováno na GitHub Pages z tohoto repozitáře, s vlastní doménou caribyacht.cz (soubor `CNAME`).
 
 ## Pravidla pro texty
 - Nikdy nepoužívat dlouhou pomlčku (em dash). Místo ní čárka, dvojtečka nebo nová věta.
@@ -18,7 +18,8 @@ Statický vícestránkový web (HTML, CSS, JS) bez build kroku. Hostováno na Ne
 - Sdílené styly a skript: `assets/styles.css`, `assets/main.js`. Hlavička a patička jsou na každé stránce stejné, při změně upravit všude.
 - Odkazy jsou relativní a vedou na složky (`kapitani/`), ne na `index.html`.
 - Nová destinace: zkopírovat existující destinaci ve stejné oblasti (např. `destinace/stredomori/turecko/`), pak přidat kartu na stránku oblasti (např. `destinace/stredomori/index.html`), podle potřeby na úvod a do `sitemap.xml`.
-- Staré adresy z původního webu přesměrovat v `_redirects` (301).
+- Staré adresy z původního webu: GitHub Pages neumí přesměrování 301. Jednotlivá stará adresa dostane vlastní složku s přesměrovací stránkou (vzor např. `kapitani/index.html`: canonical, meta refresh a `location.replace`). Celé skupiny adres (např. `/kategorie/*`) se přesměrují skriptem v `404.html`.
+- `.nojekyll` v kořeni nechat, jinak GitHub Pages web prožene Jekyllem.
 
 ## SEO
 - Každá stránka má vlastní title, description, canonical a Open Graph.

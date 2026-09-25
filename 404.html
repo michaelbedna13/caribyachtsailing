@@ -2,6 +2,29 @@
 <html lang="cs">
 <head>
 <meta charset="utf-8">
+<script>
+// Přesměrování celých skupin starých adres. GitHub Pages neumí 301, proto to řeší 404 stránka skriptem.
+// Jednotlivé staré adresy mají vlastní přesměrovací stránku ve své složce (např. kapitani/index.html).
+(function(){
+  var p=location.pathname.toLowerCase(), rules=[
+  ["/kategorie/sluzby/teambuilding-na-jachte/","/pro-firmy/"],
+  ["/kategorie/","/"],
+  ["/destinace/stredomori/","/destinace/stredomori/"],
+  ["/destinace/severni-more/","/destinace/severni-more/"],
+  ["/destinace/karibik/","/destinace/karibik/"],
+  ["/tagy/","/"],
+  ["/2014/","/"],
+  ["/2015/","/"],
+  ["/2016/","/"],
+  ["/2017/","/"],
+  ["/2018/","/"],
+  ["/2019/","/"],
+  ["/2020/","/"],
+  ["/2022/","/"]
+  ];
+  for(var i=0;i<rules.length;i++){ if(p.indexOf(rules[i][0])===0&&p!==rules[i][1]){ location.replace(rules[i][1]); return; } }
+})();
+</script>
 <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
 <title>Stránka nenalezena | Carib Yacht Sailing</title>
 <meta name="description" content="Stránka nenalezena.">
