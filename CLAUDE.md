@@ -16,7 +16,7 @@ Statický vícestránkový web (HTML, CSS, JS) bez build kroku. Hostováno na Ne
 ## Struktura
 - Sdílené styly a skript: `assets/styles.css`, `assets/main.js`. Hlavička a patička jsou na každé stránce stejné, při změně upravit všude.
 - Odkazy jsou relativní a vedou na složky (`kapitani/`), ne na `index.html`.
-- Nová destinace: zkopírovat `destinace/turecko/`, pak přidat kartu na úvod, do `destinace/index.html` a do `sitemap.xml`.
+- Nová destinace: zkopírovat existující destinaci ve stejné oblasti (např. `destinace/stredomori/turecko/`), pak přidat kartu na stránku oblasti (např. `destinace/stredomori/index.html`), podle potřeby na úvod a do `sitemap.xml`.
 - Staré adresy z původního webu přesměrovat v `_redirects` (301).
 
 ## SEO
