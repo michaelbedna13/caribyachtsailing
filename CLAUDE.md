@@ -16,6 +16,7 @@ Statický vícestránkový web (HTML, CSS, JS) bez build kroku. Hostováno na Gi
 
 ## Struktura
 - Sdílené styly a skript: `assets/styles.css`, `assets/main.js`. Hlavička a patička jsou na každé stránce stejné, při změně upravit všude.
+- Odkazy na `styles.css` a `main.js` mají verzi (`?v=RRRRMMDD`). Po každé změně CSS nebo JS ji zvýšit na všech stránkách, jinak prohlížeče drží starou verzi z mezipaměti.
 - Odkazy jsou relativní a vedou na složky (`kapitani/`), ne na `index.html`.
 - Nová destinace: zkopírovat existující destinaci ve stejné oblasti (např. `destinace/stredomori/turecko/`), pak přidat kartu na stránku oblasti (např. `destinace/stredomori/index.html`), podle potřeby na úvod a do `sitemap.xml`.
 - Staré adresy z původního webu: GitHub Pages neumí přesměrování 301. Jednotlivá stará adresa dostane vlastní složku s přesměrovací stránkou (vzor např. `kapitani/index.html`: canonical, meta refresh a `location.replace`). Celé skupiny adres (např. `/kategorie/*`) se přesměrují skriptem v `404.html`.
