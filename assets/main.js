@@ -292,3 +292,14 @@ document.querySelectorAll('.subnav').forEach(function(nav){
   }); },{rootMargin:'-45% 0px -50% 0px'});
   Object.keys(map).forEach(function(id){ io.observe(document.getElementById(id)); });
 });
+
+// Trasa „Od první zprávy po vyplutí“: vyplní se jednou, když je z větší části vidět
+document.querySelectorAll('.journey').forEach(function(el){
+  // Linka vede jen od první do poslední zastávky, ne až k okraji
+  var last=el.lastElementChild;
+  function fit(){ el.style.setProperty('--end',(last.offsetLeft+6.5)+'px'); el.style.setProperty('--endy',(last.offsetTop+36.5)+'px'); }
+  fit(); window.addEventListener('resize',fit);
+  if(!('IntersectionObserver' in window)){ el.classList.add('in'); return; }
+  var io=new IntersectionObserver(function(en){ if(en[0].isIntersecting){ el.classList.add('in'); io.disconnect(); } },{threshold:.5});
+  io.observe(el);
+});
