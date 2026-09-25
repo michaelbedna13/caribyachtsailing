@@ -1014,25 +1014,6 @@ a,button,summary,label{touch-action:manipulation}
 .page-head .hero-links a:hover{background:#fff;color:var(--ink);border-color:#fff}
 .header .btn:hover{background:#fff;color:var(--ink);border-color:#fff}
 
-/* ===== v24: mapky oblastí na stránce Destinace ===== */
-/* Skutečné pobřeží (Natural Earth), zlatě země z popisu oblasti; při zobrazení se jednou dokreslí */
-.region-map{margin-bottom:clamp(20px,3vh,32px)}
-.region-map svg{display:block;max-width:100%;height:auto}
-.rm-land{fill:var(--ink);fill-opacity:.05}
-.rm-hi{fill:var(--brass-light);fill-opacity:.5}
-.rm-coast{fill:none;stroke:var(--ink);stroke-width:.7;stroke-opacity:.75;stroke-linejoin:round}
-.rm-grat{stroke:var(--ink);stroke-opacity:.1;stroke-width:.5}
-.rm-deg{font-family:var(--sans);font-size:7px;fill:var(--stone);letter-spacing:.04em}
-.rm-lab{font-family:var(--sans);font-size:9.5px;font-weight:500;fill:var(--ink);letter-spacing:.06em}
-.rm-dot{fill:var(--brass)}
-.rm-frame{fill:none;stroke:var(--ink);stroke-opacity:.3;stroke-width:1}
-.region-map .dw-step path{stroke-dasharray:1;stroke-dashoffset:1}
-.region-map.in .dw-step path{animation:dwdraw 2.2s var(--ease) forwards}
-.region-map .rm-land,.region-map .rm-hi,.region-map .dw-note{opacity:0;transition:opacity 1s var(--ease) 1s}
-.region-map.in .rm-land,.region-map.in .rm-hi,.region-map.in .dw-note{opacity:1}
-.region-map.in .dw-note{transition-delay:1.6s}
-@media (prefers-reduced-motion:reduce){.region-map .dw-step path{stroke-dashoffset:0;animation:none}.region-map .rm-land,.region-map .rm-hi,.region-map .dw-note{opacity:1}}
-
 /* ===== v25: doladění pohybu (emil-design-eng) ===== */
 /* Rychlejší reakce na myš (pod 0,3 s) a odezva na stisk */
 .btn{transition:background-color .2s var(--ease),color .2s var(--ease),border-color .2s var(--ease),transform .16s var(--ease)}
