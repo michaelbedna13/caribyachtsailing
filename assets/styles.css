@@ -693,6 +693,19 @@ a,button,summary,label{touch-action:manipulation}
 .quotes .who{margin-top:22px;display:grid;gap:2px}
 .quotes .who strong{font-weight:500;font-size:16px}
 .quotes .who span{font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--brass-text)}
+/* Úvod: reference jako karty s jemným stínem (výjimka z pravidla bez stínů, viz CLAUDE.md).
+   Hlavní citace velká vlevo, dvě menší vpravo, v rohu vodoznak plachetnice z loga. */
+.quotes.featured{grid-template-columns:7fr 5fr;gap:clamp(20px,2.4vw,32px);align-items:stretch}
+.quotes.featured li{position:relative;overflow:hidden;isolation:isolate;border:0;background:var(--white);padding:clamp(28px,3.4vw,48px);box-shadow:0 1px 2px rgba(11,22,33,.04),0 18px 40px -20px rgba(11,22,33,.18)}
+.quotes.featured li:first-child{grid-row:span 2;padding:clamp(36px,4.4vw,64px);justify-content:space-between}
+.quotes.featured li:first-child blockquote p{font-size:clamp(28px,3.1vw,44px);line-height:1.28;letter-spacing:-.005em;max-width:20ch}
+.quotes.featured li + li blockquote p{font-size:clamp(19px,1.6vw,22px)}
+.quotes.featured .who{margin-top:28px}
+.quotes.featured li:first-child .who{margin-top:40px;padding-top:20px;border-top:1px solid var(--brass-light);max-width:220px}
+.q-sail{position:absolute;right:-18px;bottom:-22px;z-index:-1;width:140px;height:140px;color:var(--ivory);opacity:1;pointer-events:none}
+.q-sail .lm-acc{fill:var(--brass-light);opacity:.35}
+.quotes.featured li:first-child .q-sail{width:clamp(200px,24vw,320px);height:clamp(200px,24vw,320px);right:-30px;bottom:-40px}
+@media (max-width:900px){.quotes.featured{grid-template-columns:1fr;gap:16px}.quotes.featured li:first-child{grid-row:auto}.quotes.featured li:first-child blockquote p{font-size:clamp(25px,6.8vw,34px)}.quotes.featured li:last-child{border:0}.q-sail{width:110px;height:110px}.quotes.featured li:first-child .q-sail{width:190px;height:190px}}
 @media (max-width:900px){.quotes{grid-template-columns:1fr;gap:0}.quotes li{padding:28px 0}.quotes li:last-child{border-bottom:1px solid var(--line)}}
 
 /* ===== Závěrečný banner ===== */
