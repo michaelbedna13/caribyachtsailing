@@ -322,3 +322,29 @@ document.querySelectorAll('.pack').forEach(function(box){
   if(reset) reset.addEventListener('click',function(){ boxes.forEach(function(b){ b.checked=false; }); save(); update(); });
   update();
 });
+
+// Profily kapitánů: karta rozbalí celý profil pod svou řadou, otevřený je vždy jen jeden
+document.querySelectorAll('[data-crew]').forEach(function(crew){
+  var toggles=[].slice.call(crew.querySelectorAll('.cap-toggle'));
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  function panel(b){ return document.getElementById(b.getAttribute('aria-controls')); }
+  function show(id,focus){
+    toggles.forEach(function(b){
+      var on=b.getAttribute('aria-controls')===id;
+      b.setAttribute('aria-expanded',on); b.textContent=on?'Skrýt profil':'Profil kapitána';
+      panel(b).hidden=!on;
+    });
+    if(history.replaceState) history.replaceState(null,'',id?'#'+id:location.pathname+location.search);
+    if(!id) return;
+    var p=document.getElementById(id);
+    if(focus) p.focus({preventScroll:true});
+    // Posunout jen tehdy, když by profil začínal mimo obrazovku
+    if(focus==='hash'||p.getBoundingClientRect().top>window.innerHeight-140) p.scrollIntoView({behavior:reduce?'auto':'smooth',block:'start'});
+  }
+  toggles.forEach(function(b){
+    b.addEventListener('click',function(){ show(b.getAttribute('aria-expanded')==='true'?null:b.getAttribute('aria-controls'),false); });
+    panel(b).querySelector('.cd-close').addEventListener('click',function(){ show(null); b.focus({preventScroll:true}); b.closest('.captain').scrollIntoView({behavior:reduce?'auto':'smooth',block:'nearest'}); });
+  });
+  function fromHash(){ var id=location.hash.slice(1); if(id&&toggles.some(function(b){return b.getAttribute('aria-controls')===id;})) show(id,'hash'); }
+  fromHash(); window.addEventListener('hashchange',fromHash);
+});

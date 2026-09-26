@@ -12,7 +12,7 @@ Statický vícestránkový web (HTML, CSS, JS) bez build kroku. Hostováno na Gi
 - Nadpisy: DM Serif Display. Text: Jost (400 a 500). Oba z Google Fonts.
 - Barvy jsou jako proměnné v `assets/styles.css` (:root): midnight, ivory, brass. Nové barvy nepřidávat.
 - Prémiový, vzdušný styl: velké fotky, tenké linky, hodně prostoru. Žádné kartičky se stíny, ikonky v kolečkách, barevné přechody ani štítky typu „Nejčastější volba“. Výzvy k akci vždy jako tlačítka (.btn nebo .line-link).
-- Výjimka: reference hostů na úvodu a v Kontaktu (`.quotes.featured`) jsou karty s jemným stínem a vodoznakem plachetnice z loga (na ivory pozadí bílé, na bílém v ivory). Na přání klienta, jinde stíny nepoužívat.
+- Výjimka: reference hostů na úvodu a v Kontaktu (`.quotes.featured`) jsou karty s jemným stínem a vodoznakem plachetnice z loga (na ivory pozadí bílé, na bílém v ivory). Stejně tak karty kapitánů na stránce Náš příběh (`.crew`) a jejich rozbalený profil (`.cap-detail`). Na přání klienta, jinde stíny nepoužívat.
 - Všechny stránky musí fungovat na mobilu i desktopu.
 - Hero sekce mají tři typy, jiné nevymýšlet:
   1. Úvod: fotka přes celou obrazovku (`.hero.home`).
