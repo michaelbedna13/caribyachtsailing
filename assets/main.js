@@ -311,3 +311,14 @@ document.querySelectorAll('.journey').forEach(function(el){
   var io=new IntersectionObserver(function(en){ if(en[0].isIntersecting){ el.classList.add('in'); io.disconnect(); } },{threshold:.5});
   io.observe(el);
 });
+
+// Balicí seznam na stránce Jak to funguje: odškrtnuté položky si pamatuje prohlížeč
+document.querySelectorAll('.pack').forEach(function(box){
+  var KEY='cys-baleni', boxes=[].slice.call(box.querySelectorAll('input[type=checkbox]')), count=box.querySelector('.pack-count'), reset=box.querySelector('.pack-reset');
+  function load(){ try{ return JSON.parse(localStorage.getItem(KEY)||'[]'); }catch(e){ return []; } }
+  function save(){ try{ localStorage.setItem(KEY,JSON.stringify(boxes.filter(function(b){return b.checked;}).map(function(b){return b.value;}))); }catch(e){} }
+  function update(){ var n=boxes.filter(function(b){return b.checked;}).length; count.textContent=n+'\u00a0z\u00a0'+boxes.length+(n===boxes.length?' sbaleno, můžete vyplout':' sbaleno'); }
+  var saved=load(); boxes.forEach(function(b){ b.checked=saved.indexOf(b.value)>-1; b.addEventListener('change',function(){ save(); update(); }); });
+  if(reset) reset.addEventListener('click',function(){ boxes.forEach(function(b){ b.checked=false; }); save(); update(); });
+  update();
+});
