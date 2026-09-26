@@ -537,7 +537,6 @@ a,button,summary,label{touch-action:manipulation}
 .mini-thin{fill:none;stroke:var(--stone);stroke-width:.8}
 .mini-dash{fill:none;stroke:var(--brass);stroke-width:1;stroke-dasharray:3 4}
 .mini-sail{fill:var(--brass-light);fill-opacity:.35;stroke:var(--brass);stroke-width:1;stroke-linejoin:round}
-.panel .mini-draw{width:100%;max-width:232px;height:auto;margin:0 0 22px}
 .glossary .has-rig{display:grid;grid-template-columns:1fr auto;column-gap:16px}
 .glossary .has-rig .rig{grid-column:2;grid-row:1 / span 2;width:92px;height:auto;align-self:center}
 .glossary .has-rig dt,.glossary .has-rig dd{grid-column:1}
