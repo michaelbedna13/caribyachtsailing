@@ -117,6 +117,8 @@ a,button,summary,label{touch-action:manipulation}
 .hero-img{position:absolute;inset:0}
 .hero-img img{width:100%;height:100%;object-fit:cover;transform:scale(1.07);animation:settle 9s var(--ease) forwards}
 @keyframes settle{to{transform:scale(1)}}
+/* Úvodní fotka: loď je vlevo, na úzkém displeji výřez posunout k ní */
+@media (max-width:760px){.hero.home .hero-img img{object-position:24% center}}
 .hero::after{content:"";position:absolute;inset:0;background:linear-gradient(90deg,rgba(6,13,20,.72) 0%,rgba(6,13,20,.45) 38%,rgba(6,13,20,.08) 72%),linear-gradient(180deg,rgba(6,13,20,.5) 0%,rgba(6,13,20,0) 26%,rgba(6,13,20,.15) 60%,rgba(6,13,20,.7) 100%)}
 .hero h1,.hero .sub,.hero .kicker{text-shadow:0 2px 30px rgba(6,13,20,.35)}
 .hero-content{position:relative;z-index:1;display:grid;grid-template-columns:1fr;align-items:end;gap:40px;padding-top:calc(var(--header-h) + 48px);padding-bottom:clamp(48px,8vh,88px)}
