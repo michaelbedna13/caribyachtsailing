@@ -519,7 +519,17 @@ a,button,summary,label{touch-action:manipulation}
 @media (min-width:761px){.profile2{padding:clamp(28px,5vh,44px) 0}}
 @media (max-width:760px){.profile2 h3{font-size:clamp(24px,7vw,30px)}}
 @media (max-width:700px){.profile2{grid-template-columns:1fr;gap:14px}}
-@media (max-width:600px){.profile2 .fig{display:flex;align-items:baseline;gap:16px}}
+/* Mobil: jméno a role nahoře, pod nimi číslo s popiskem na jednom řádku mezi tenkými linkami, pak text */
+@media (max-width:700px){
+  .profile2{display:flex;flex-direction:column;gap:0;padding:36px 0}
+  .profile2 > div:last-child{display:contents}
+  .profile2 h3{order:1}
+  .profile2 .role{order:2}
+  .profile2 .fig{order:3;display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 12px;margin:20px 0 4px;padding:14px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
+  .profile2 .fig strong{font-size:32px}
+  .profile2 .fig span{margin-top:0;max-width:none}
+  .profile2 p{order:4}
+}
 
 /* ===== Náš příběh ===== */
 /* Úvodní linka 1974 až 2008 */
