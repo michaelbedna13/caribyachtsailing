@@ -497,7 +497,9 @@ a,button,summary,label{touch-action:manipulation}
 .scale i.on{background:var(--brass)}
 .scale-t{display:block;margin-top:10px;font-size:17px;color:var(--ink);line-height:1.4}
 @media (max-width:760px){.boats{grid-template-columns:1fr 1fr;gap:12px}.boat h3{font-size:22px}.boat .note{font-size:15px}.scale-t{font-size:15px}}
-@media (max-width:600px){.boats{grid-template-columns:1fr;gap:40px}.boat h3{font-size:26px}
+@media (max-width:600px){.boats{grid-template-columns:1fr;gap:48px}.boat h3{font-size:26px}
+  /* Na mobilu nadpis a popisek nad výkresem */
+  .boat{display:flex;flex-direction:column}.boat h3{order:-2;margin-top:0}.boat .note{order:-1;margin:6px 0 16px}
   /* Výkresy jsou pod sebou, proto nad srovnáním lišta s názvy sloupců, která zůstane nahoře */
   .cmp-head{display:grid;grid-template-columns:1fr 1fr;column-gap:20px;position:sticky;top:130px;z-index:2;padding:12px 0;background:var(--ivory);border-top:1px solid var(--line);font-family:var(--serif);font-size:20px}
   .cmp-row{column-gap:20px}
