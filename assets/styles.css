@@ -570,28 +570,39 @@ a,button,summary,label{touch-action:manipulation}
   .captain{flex:0 0 82%;scroll-snap-align:start}
 }
 
-/* Profily kapitánů */
-.profile2{display:grid;grid-template-columns:230px 1fr;gap:clamp(24px,5vw,72px);padding:44px 0;border-top:1px solid var(--line);scroll-margin-top:100px}
-.profile2:last-child{border-bottom:1px solid var(--line)}
-.profile2 .fig strong{display:block;font-family:var(--serif);font-weight:400;font-size:clamp(46px,4.6vw,68px);line-height:1;color:var(--brass-text)}
-.profile2 .fig span{display:block;margin-top:10px;font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);max-width:190px;line-height:1.5}
-.profile2 h3{font-size:clamp(28px,2.8vw,40px)}
-.profile2 .role{display:block;margin-top:6px;font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--brass-text)}
-.profile2 p{margin-top:14px;color:var(--stone);max-width:680px}
-@media (min-width:761px){.profile2{padding:clamp(28px,5vh,44px) 0}}
-@media (max-width:760px){.profile2 h3{font-size:clamp(24px,7vw,30px)}}
-@media (max-width:700px){.profile2{grid-template-columns:1fr;gap:14px}}
-/* Mobil: jméno a role nahoře, pod nimi číslo s popiskem na jednom řádku mezi tenkými linkami, pak text */
-@media (max-width:700px){
-  .profile2{display:flex;flex-direction:column;gap:0;padding:36px 0}
-  .profile2 > div:last-child{display:contents}
-  .profile2 h3{order:1}
-  .profile2 .role{order:2}
-  .profile2 .fig{order:3;display:flex;align-items:baseline;flex-wrap:wrap;gap:4px 12px;margin:20px 0 4px;padding:14px 0;border-top:1px solid var(--line);border-bottom:1px solid var(--line)}
-  .profile2 .fig strong{font-size:32px}
-  .profile2 .fig span{margin-top:0;max-width:none}
-  .profile2 p{order:4}
+/* Profily kapitánů (Náš příběh): karty se stínem, profil se rozbalí pod řadou karet */
+.crew{grid-auto-flow:row dense}
+.crew .captain{position:relative;border:0;box-shadow:0 1px 2px rgba(11,22,33,.04),0 18px 40px -20px rgba(11,22,33,.18)}
+.crew .cap-toggle{margin-top:22px;align-self:flex-start;background:none;color:inherit;font-family:inherit;cursor:pointer}
+.crew .cap-toggle::before{content:"";position:absolute;inset:0}
+.crew .captain:hover .cap-toggle{background:var(--ink);border-color:var(--ink);color:#fff}
+.crew .captain:hover .cap-toggle::after{transform:translateX(4px)}
+.crew .cap-toggle[aria-expanded="true"]{background:var(--ink);border-color:var(--ink);color:#fff}
+.crew .cap-toggle[aria-expanded="true"]::after,.crew .captain:hover .cap-toggle[aria-expanded="true"]::after{transform:rotate(90deg)}
+.cap-detail{grid-column:1/-1;position:relative;overflow:hidden;isolation:isolate;display:grid;grid-template-columns:5fr 7fr;gap:clamp(28px,5vw,80px);padding:clamp(32px,5vw,72px);background:var(--white);box-shadow:0 1px 2px rgba(11,22,33,.04),0 18px 40px -20px rgba(11,22,33,.18);scroll-margin-top:100px;outline:none}
+.cap-detail[hidden]{display:none}
+.cap-detail:not([hidden]){animation:cd-in .6s var(--ease)}
+@keyframes cd-in{from{opacity:0;transform:translateY(12px)}}
+.cap-detail .q-sail{color:var(--ivory);width:clamp(220px,26vw,340px);height:clamp(220px,26vw,340px);right:-30px;bottom:-40px}
+.cap-detail h4{font-family:var(--serif);font-weight:400;font-size:clamp(30px,3vw,44px);line-height:1.1}
+.cap-detail .role{display:block;margin-top:8px;font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--brass-text)}
+.cd-facts{margin:30px 0 0;border-bottom:1px solid var(--line)}
+.cd-facts div{display:grid;grid-template-columns:130px 1fr;gap:16px;padding:14px 0;border-top:1px solid var(--line)}
+.cd-facts dt{font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--stone);padding-top:3px}
+.cd-facts dd{margin:0;font-size:16px}
+.cd-text p{color:var(--stone);max-width:640px}
+.cd-text p + p{margin-top:14px}
+.cd-close{margin-top:32px;background:none;color:inherit;font-family:inherit;cursor:pointer}
+.cap-detail .cd-close::after{transform:rotate(180deg)}
+.cap-detail .cd-close:hover::after{transform:rotate(180deg) translateX(4px)}
+@media (max-width:900px){.cap-detail{grid-template-columns:1fr}.cd-facts{margin-top:24px}}
+@media (max-width:640px){
+  .crew{display:grid;grid-template-columns:1fr;overflow:visible;margin-inline:0;padding:0;gap:16px}
+  .cap-detail{padding:30px 22px 34px}
+  .cd-facts div{grid-template-columns:1fr;gap:4px}
+  .cap-detail .q-sail{width:160px;height:160px;right:-24px;bottom:-30px}
 }
+@media (prefers-reduced-motion:reduce){.cap-detail:not([hidden]){animation:none}}
 
 /* ===== Náš příběh ===== */
 /* Úvodní linka 1974 až 2008 */
