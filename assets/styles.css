@@ -693,6 +693,15 @@ a,button,summary,label{touch-action:manipulation}
 .quotes .who{margin-top:22px;display:grid;gap:2px}
 .quotes .who strong{font-weight:500;font-size:16px}
 .quotes .who span{font-size:12px;font-weight:500;letter-spacing:.14em;text-transform:uppercase;color:var(--brass-text)}
+/* Úvod: jedna hlavní citace velkým písmem, vedle dvě menší */
+.quotes.featured{grid-template-columns:7fr 5fr;column-gap:clamp(40px,7vw,120px);row-gap:0;align-items:start}
+.quotes.featured li:first-child{grid-row:span 2;padding-top:36px;border-top-color:var(--brass)}
+.quotes.featured li:first-child blockquote p{font-size:clamp(28px,3.1vw,44px);line-height:1.28;letter-spacing:-.005em;max-width:22ch}
+.quotes.featured li:first-child .who{margin-top:32px}
+.quotes.featured li + li{padding-bottom:36px}
+.quotes.featured li:last-child{padding-bottom:0}
+.quotes.featured li + li blockquote p{font-size:clamp(19px,1.6vw,22px)}
+@media (max-width:900px){.quotes.featured{grid-template-columns:1fr}.quotes.featured li:first-child{grid-row:auto;padding:32px 0}.quotes.featured li:first-child blockquote p{font-size:clamp(26px,7vw,34px)}.quotes.featured li + li{padding:28px 0}}
 @media (max-width:900px){.quotes{grid-template-columns:1fr;gap:0}.quotes li{padding:28px 0}.quotes li:last-child{border-bottom:1px solid var(--line)}}
 
 /* ===== Závěrečný banner ===== */
