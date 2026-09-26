@@ -714,6 +714,9 @@ a,button,summary,label{touch-action:manipulation}
 .quotes.featured li:first-child .who{margin-top:40px;padding-top:20px;border-top:1px solid var(--brass-light);max-width:220px}
 .q-sail{position:absolute;right:-18px;bottom:-22px;z-index:-1;width:140px;height:140px;color:var(--ivory);opacity:1;pointer-events:none}
 .q-sail .lm-acc{fill:var(--brass-light);opacity:.35}
+/* Na bílém pozadí (Kontakt) jsou karty v ivory, vodoznak bílý */
+.refs-on-white .quotes.featured li{background:var(--ivory)}
+.refs-on-white .q-sail{color:var(--white)}
 /* Ve vodoznaku jen plachty, bez vlnky vody pod lodí (u okraje karty působila jako ořezaný útvar) */
 .q-sail .lm-acc:last-of-type{display:none}
 .quotes.featured li:first-child .q-sail{width:clamp(200px,24vw,320px);height:clamp(200px,24vw,320px);right:-30px;bottom:-40px}
