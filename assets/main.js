@@ -405,10 +405,30 @@ document.querySelectorAll('[data-vmap]').forEach(function(map){
   }
   // Zvýraznění: odkaz v seznamu a bod na mapě patří k sobě
   function hl(slug,on){ map.querySelectorAll('[data-p="'+slug+'"]').forEach(function(el){ el.classList.toggle('hl',on); }); }
+  // Na mapě se vybírá bod nejbližší ukazateli (do 18 px), aby šly trefit i body těsně u sebe
+  var hot=null;
+  function nearest(x,y){
+    var best=null, bd=18*18, zoomed=map.classList.contains('zoomed');
+    pins.forEach(function(p){
+      if(zoomed&&!p.classList.contains('on')) return;
+      var c=p.querySelector('circle').getBoundingClientRect(), dx=c.left+c.width/2-x, dy=c.top+c.height/2-y, d=dx*dx+dy*dy;
+      if(d<bd){ bd=d; best=p; }
+    });
+    return best;
+  }
+  function setHot(p){
+    if(p===hot) return;
+    if(hot) hl(hot.getAttribute('data-p'),false);
+    hot=p; svg.classList.toggle('hot',!!p);
+    // Vybraný bod dopředu, aby jeho popisek nepřekryly sousední body
+    if(p){ p.parentNode.appendChild(p); hl(p.getAttribute('data-p'),true); }
+  }
+  svg.addEventListener('mousemove',function(e){ setHot(nearest(e.clientX,e.clientY)); });
+  svg.addEventListener('mouseleave',function(){ setHot(null); });
+  svg.addEventListener('click',function(e){ var p=nearest(e.clientX,e.clientY); if(p) location.href=p.getAttribute('href'); });
   map.querySelectorAll('[data-p]').forEach(function(el){
     var slug=el.getAttribute('data-p');
-    // Bod pod myší dopředu, aby jeho popisek nepřekryly sousední body
-    el.addEventListener('mouseenter',function(){ if(el.classList.contains('pm-pin')) el.parentNode.appendChild(el); hl(slug,true); }); el.addEventListener('mouseleave',function(){ hl(slug,false); });
+    el.addEventListener('mouseenter',function(){ hl(slug,true); }); el.addEventListener('mouseleave',function(){ hl(slug,false); });
     el.addEventListener('focus',function(){ hl(slug,true); }); el.addEventListener('blur',function(){ hl(slug,false); });
   });
 });
