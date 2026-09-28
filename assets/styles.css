@@ -267,6 +267,8 @@ a,button,summary,label{touch-action:manipulation}
 .figures2 span{display:block;margin-top:10px;font-size:12px;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--stone);max-width:140px;line-height:1.45}
 
 /* Fotky nikdy vyšší než zhruba dvě třetiny okna */
+/* Fotka s pevným poměrem a max-height se jinak na nízkém okně zúží, místo aby se ořízla */
+.region-img,.chapter-img,.split-img,.ai-img,.svc-img{width:100%}
 @media (min-width:761px){
   .split-img,.ai-img{max-height:min(68vh,720px)}
   .figures2{margin:clamp(24px,4vh,40px) 0 clamp(28px,4.5vh,44px)}
