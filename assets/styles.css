@@ -123,7 +123,7 @@ a,button,summary,label{touch-action:manipulation}
 .hero h1,.hero .sub,.hero .kicker{text-shadow:0 2px 30px rgba(6,13,20,.35)}
 .hero-content{position:relative;z-index:1;display:grid;grid-template-columns:1fr;align-items:end;gap:40px;padding-top:calc(var(--header-h) + 48px);padding-bottom:clamp(48px,8vh,88px)}
 .hero.page .hero-content{padding-top:calc(var(--header-h) + 32px)}
-.hero h1{margin-top:22px;font-size:clamp(40px,min(5.2vw,9vh),88px);line-height:1.02;letter-spacing:-.015em;max-width:17ch}
+.hero h1{margin-top:22px;font-size:clamp(40px,min(6vw,9vh),88px);line-height:1.02;letter-spacing:-.015em;max-width:17ch}
 /* Stejná velikost nadpisu na všech podstránkách, s fotkou i bez */
 .hero.page h1{font-size:clamp(38px,min(4.4vw,7.6vh),68px)}
 .hero .sub{margin-top:clamp(18px,3vh,30px);max-width:540px;font-size:19px;line-height:1.65;color:rgba(255,255,255,.92)}
@@ -963,6 +963,8 @@ a,button,summary,label{touch-action:manipulation}
 .footer .about{margin-top:24px;max-width:280px}
 .footer h2{font-family:var(--sans);font-weight:500;font-size:12px;letter-spacing:.24em;text-transform:uppercase;color:#fff;margin-bottom:18px}
 .footer ul{display:grid;gap:8px}
+/* Mobil: větší plocha pro prst u odkazů v patičce, rozestupy zůstávají skoro stejné */
+@media (max-width:760px),(pointer:coarse){.footer ul{gap:0}.footer li a{display:inline-block;padding:5px 0}}
 .footer a{text-decoration:none}
 .footer a:hover{color:#fff}
 .footer address{font-style:normal}
