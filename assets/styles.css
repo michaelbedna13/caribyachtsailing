@@ -193,7 +193,7 @@ a,button,summary,label{touch-action:manipulation}
 .dcard p{margin-top:12px;color:var(--stone);max-width:380px}
 .dcard .line-link{margin-top:22px}
 .dark .dcard p{color:rgba(255,255,255,.8)}
-@media (min-width:761px){.dcards .dcard .img{aspect-ratio:4/5;max-height:50vh}}
+@media (min-width:761px){.dcards .dcard .img{width:100%;aspect-ratio:4/5;max-height:50vh}}
 @media (max-width:960px){.dcards{grid-template-columns:1fr 1fr}}
 @media (max-width:640px){.dcards{grid-template-columns:1fr;gap:56px}.dcard .img{aspect-ratio:4/3.6}}
 
@@ -704,7 +704,7 @@ a,button,summary,label{touch-action:manipulation}
 .fcard:hover .img img{transform:scale(1.035)}
 .fcard h3{margin-top:26px;font-size:clamp(28px,2.6vw,38px)}
 .fcard p{margin-top:12px;color:var(--stone);max-width:540px}
-@media (min-width:761px){.fcard .img{max-height:42vh}}
+@media (min-width:761px){.fcard .img{width:100%;max-height:42vh}}
 @media (max-width:760px){.fcards{grid-template-columns:1fr;gap:48px}}
 
 /* Plavební mapa Kam s týmem: loď pluje po trase podle scrollování */
