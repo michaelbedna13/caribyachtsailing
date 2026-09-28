@@ -484,7 +484,8 @@ a,button,summary,label{touch-action:manipulation}
 /* Plachetnice a katamarán: výkresy a srovnání */
 .boats{display:grid;grid-template-columns:1fr 1fr;gap:clamp(20px,3vw,48px)}
 .boat .svc-draw{padding:clamp(12px,2vw,28px)}
-.boat .svc-draw svg{height:auto}
+.boat .svc-draw svg{height:auto;max-height:min(62vh,540px);display:block;margin-inline:auto}
+@media (min-width:601px){.boat .dw-t{font-size:13.5px}}
 .boat h3{margin-top:24px;font-size:clamp(28px,2.6vw,36px)}
 .boat .note{margin-top:8px;color:var(--stone)}
 .compare{margin-top:clamp(40px,5vw,72px);border-bottom:1px solid var(--line)}
