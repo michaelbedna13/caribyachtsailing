@@ -617,15 +617,16 @@ a,button,summary,label{touch-action:manipulation}
 .pm-home{opacity:0;transition:opacity .4s}
 .pm-home.on{opacity:1}
 .pm-pin > g{transform:scale(var(--u))}
-.pm-pin circle{fill:var(--midnight);stroke:var(--white);stroke-width:1.6;transition:fill .2s}
+.pm-pin .pm-hit{fill:transparent;stroke:none}
+.pm-pin circle:not(.pm-hit){fill:var(--midnight);stroke:var(--white);stroke-width:1.6;transition:fill .2s}
 .pm-pin text{font-family:var(--sans);font-size:13px;font-weight:500;letter-spacing:.02em;fill:var(--ink);stroke:var(--white);stroke-width:4px;stroke-linejoin:round;paint-order:stroke;opacity:0;transition:opacity .4s}
 .pm-pin.l text{text-anchor:end}
 .pm-pin.t text,.pm-pin.b text{text-anchor:middle}
 .pm-pin{transition:opacity .4s}
 .vmap.zoomed .pm-pin{opacity:.25;pointer-events:none}
 .vmap.zoomed .pm-pin.on{opacity:1;pointer-events:auto}
-.pm-pin.on text{opacity:1}
-.pm-pin:hover circle,.pm-pin.hl circle,.pm-pin:focus-visible circle{fill:var(--brass)}
+.pm-pin.on text,.pm-pin:hover text,.pm-pin.hl text{opacity:1}
+.pm-pin:hover circle:not(.pm-hit),.pm-pin.hl circle:not(.pm-hit){fill:var(--brass)}
 .pm-pin.hl text,.pm-pin:hover text{fill:var(--brass-text)}
 .vmap-step{min-height:78vh;display:flex;flex-direction:column;justify-content:center;opacity:.3;transition:opacity .5s var(--ease)}
 .vmap-step:first-child{min-height:62vh}
