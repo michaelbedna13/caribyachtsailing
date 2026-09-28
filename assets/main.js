@@ -408,9 +408,11 @@ document.querySelectorAll('[data-vmap]').forEach(function(map){
   // Na mapě se vybírá bod nejbližší ukazateli (do 18 px), aby šly trefit i body těsně u sebe
   var hot=null;
   function nearest(x,y){
-    var best=null, bd=18*18, zoomed=map.classList.contains('zoomed');
+    var best=null, bd=18*18;
+    // V oddálené mapě se vybírá oblast přes její popisek, ne jednotlivé body
+    if(!map.classList.contains('zoomed')) return null;
     pins.forEach(function(p){
-      if(zoomed&&!p.classList.contains('on')) return;
+      if(!p.classList.contains('on')) return;
       var c=p.querySelector('circle').getBoundingClientRect(), dx=c.left+c.width/2-x, dy=c.top+c.height/2-y, d=dx*dx+dy*dy;
       if(d<bd){ bd=d; best=p; }
     });
@@ -426,6 +428,17 @@ document.querySelectorAll('[data-vmap]').forEach(function(map){
   svg.addEventListener('mousemove',function(e){ setHot(nearest(e.clientX,e.clientY)); });
   svg.addEventListener('mouseleave',function(){ setHot(null); });
   svg.addEventListener('click',function(e){ var p=nearest(e.clientX,e.clientY); if(p) location.href=p.getAttribute('href'); });
+  // Popisek oblasti: zvýrazní její body, kliknutí posune stránku k oblasti a mapa se přiblíží
+  map.querySelectorAll('.pm-reg').forEach(function(a){
+    var r=a.getAttribute('data-r'), mine=pins.filter(function(p){ return p.getAttribute('data-r')===r; });
+    function mark(on){ a.classList.toggle('hl',on); mine.forEach(function(p){ p.classList.toggle('rhl',on); }); }
+    a.addEventListener('mouseenter',function(){ mark(true); }); a.addEventListener('mouseleave',function(){ mark(false); });
+    a.addEventListener('click',function(e){
+      e.preventDefault(); mark(false); a.blur();
+      var s=document.getElementById('mapa-'+r);
+      window.scrollTo({top:window.scrollY+s.getBoundingClientRect().top-innerHeight*.5,behavior:reduce?'auto':'smooth'});
+    });
+  });
   map.querySelectorAll('[data-p]').forEach(function(el){
     var slug=el.getAttribute('data-p');
     el.addEventListener('mouseenter',function(){ hl(slug,true); }); el.addEventListener('mouseleave',function(){ hl(slug,false); });

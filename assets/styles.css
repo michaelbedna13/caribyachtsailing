@@ -620,19 +620,31 @@ a,button,summary,label{touch-action:manipulation}
 .pm-home{opacity:0;transition:opacity .4s}
 .pm-home.on{opacity:1}
 .pm-pin > g{transform:scale(var(--u))}
-.pm-pin circle{fill:var(--midnight);stroke:var(--white);stroke-width:1.6;transition:fill .2s}
+/* Bod jako bóje na námořní mapě: bílý kroužek s brass obrysem, zvýrazněný se vyplní */
+.pm-pin circle{fill:var(--white);stroke:var(--brass);stroke-width:1.8;transition:fill .2s,transform .3s var(--ease)}
 .pm-pin text{font-family:var(--sans);font-size:13px;font-weight:500;letter-spacing:.02em;fill:var(--ink);stroke:var(--white);stroke-width:4px;stroke-linejoin:round;paint-order:stroke;opacity:0;transition:opacity .4s}
 .pm-pin.l text{text-anchor:end}
 .pm-pin.t text,.pm-pin.b text{text-anchor:middle}
 .pm-pin{transition:opacity .4s}
 /* Body nechytají myš samy, nejbližší bod k ukazateli vybírá skript (v Evropě jsou body těsně u sebe) */
 .pm-pin{pointer-events:none}
-.vmap.zoomed .pm-pin{opacity:.25}
+/* Oddálená mapa: body jen jako drobné tiché značky, klikají se popisky oblastí */
+.pm-pin circle{transform:scale(.6)}
+.vmap:not(.zoomed) .pm-pin{opacity:.7}
+.vmap.zoomed .pm-pin{opacity:0}
 .vmap.zoomed .pm-pin.on{opacity:1}
+.vmap.zoomed .pm-pin.on circle{transform:none}
 .vmap-svg.hot{cursor:pointer}
 .pm-pin.on text,.pm-pin.hl text{opacity:1}
-.pm-pin.hl circle{fill:var(--brass)}
+.pm-pin.hl circle,.pm-pin.rhl circle{fill:var(--brass)}
 .pm-pin.hl text{fill:var(--brass-text)}
+.pm-reg > g{transform:scale(var(--u))}
+.pm-reg{transition:opacity .4s;outline:none}
+.pm-reg .pm-hit{fill:transparent}
+.pm-reg text{font-family:var(--sans);font-size:11px;font-weight:500;letter-spacing:.22em;text-anchor:middle;fill:var(--ink);stroke:var(--white);stroke-width:4px;stroke-linejoin:round;paint-order:stroke;transition:fill .2s}
+.pm-reg .pm-n{fill:var(--brass-text);letter-spacing:0}
+.pm-reg:hover text,.pm-reg.hl text{fill:var(--brass-text)}
+.vmap.zoomed .pm-reg{opacity:0;pointer-events:none}
 .vmap-step{min-height:78vh;display:flex;flex-direction:column;justify-content:center;opacity:.3;transition:opacity .5s var(--ease)}
 .vmap-step:first-child{min-height:62vh}
 .vmap-steps{padding-top:30vh}
