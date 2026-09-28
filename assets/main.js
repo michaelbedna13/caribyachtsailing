@@ -348,3 +348,66 @@ document.querySelectorAll('[data-crew]').forEach(function(crew){
   function fromHash(){ var id=location.hash.slice(1); if(id&&toggles.some(function(b){return b.getAttribute('aria-controls')===id;})) show(id,'hash'); }
   fromHash(); window.addEventListener('hashchange',fromHash);
 });
+
+// Mapa plaveb: při posouvání se mapa přiblíží k oblasti, nakreslí trasu a ukáže destinace
+document.querySelectorAll('[data-vmap]').forEach(function(map){
+  var svg=map.querySelector('.vmap-svg'), steps=[].slice.call(map.querySelectorAll('.vmap-step'));
+  var pins=[].slice.call(svg.querySelectorAll('.pm-pin')), routes=[].slice.call(svg.querySelectorAll('.pm-route')), home=svg.querySelector('.pm-home');
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  var world=svg.getAttribute('viewBox').split(' ').map(Number), cur=world.slice(), anim=0, active;
+  // --u = kolik jednotek mapy připadá na 1 px, aby čáry, body a popisky měly stále stejnou velikost
+  function setU(){ var w=svg.clientWidth||1, h=svg.clientHeight||1; svg.style.setProperty('--u',Math.max(cur[2]/w,cur[3]/h).toFixed(4)); }
+  function apply(){ svg.setAttribute('viewBox',cur.map(function(v){return v.toFixed(2);}).join(' ')); setU(); }
+  function zoom(to){
+    cancelAnimationFrame(anim);
+    if(reduce){ cur=to.slice(); apply(); fitLabels(); return; }
+    var from=cur.slice(), t0=performance.now(), D=1500;
+    var fc=[from[0]+from[2]/2,from[1]+from[3]/2], tc=[to[0]+to[2]/2,to[1]+to[3]/2];
+    // Mezi vzdálenými oblastmi se mapa cestou trochu oddálí
+    var bump=Math.min(2.5,Math.hypot(tc[0]-fc[0],tc[1]-fc[1])/Math.max(from[2],to[2]));
+    (function f(t){
+      var k=Math.min(1,(t-t0)/D), e=k<.5?4*k*k*k:1-Math.pow(-2*k+2,3)/2, z=1+bump*Math.sin(Math.PI*e);
+      var w=from[2]*Math.pow(to[2]/from[2],e)*z, h=from[3]*Math.pow(to[3]/from[3],e)*z;
+      var cx=fc[0]+(tc[0]-fc[0])*e, cy=fc[1]+(tc[1]-fc[1])*e;
+      cur=[cx-w/2,cy-h/2,w,h]; apply();
+      if(k<1) anim=requestAnimationFrame(f); else fitLabels();
+    })(t0);
+  }
+  // Popisek, který by přesahoval okraj mapy, se přesune na druhou stranu bodu
+  function fitLabels(){
+    var box=svg.getBoundingClientRect();
+    pins.forEach(function(p){
+      if(!p.classList.contains('on')||p.classList.contains('t')||p.classList.contains('b')) return;
+      var t=p.querySelector('text'), left=p.classList.contains('l'), r=t.getBoundingClientRect();
+      if(!left&&r.right>box.right-4){ p.classList.add('l'); t.setAttribute('x',-10); }
+      else if(left&&r.left<box.left+4){ p.classList.remove('l'); t.setAttribute('x',10); }
+    });
+  }
+  function set(step){
+    if(step===active) return; active=step;
+    var r=step?step.getAttribute('data-r'):null;
+    steps.forEach(function(s){ s.classList.toggle('on',s===step); });
+    map.classList.toggle('zoomed',!!r&&r!=='svet');
+    pins.forEach(function(p){ p.classList.toggle('on',p.getAttribute('data-r')===r); });
+    routes.forEach(function(p){ var on=p.getAttribute('data-r')===r; p.classList.toggle('off',!on); p.classList.toggle('on',on); });
+    home.classList.toggle('on',r==='vzdalena-more');
+    var b=step?step.getAttribute('data-box').split(' ').map(Number):world, m=.06;
+    zoom([b[0]-b[2]*m,b[1]-b[3]*m,b[2]*(1+2*m),b[3]*(1+2*m)]);
+  }
+  apply(); window.addEventListener('resize',setU);
+  if('IntersectionObserver' in window){
+    var io=new IntersectionObserver(function(en){ en.forEach(function(x){
+      if(x.isIntersecting) set(x.target);
+      // Nad první oblastí (posun zpět nahoru) se ukáže celý svět
+      else if(x.target===steps[0]&&x.boundingClientRect.top>=(x.rootBounds?x.rootBounds.bottom:innerHeight*.66)) set(null);
+    }); },{rootMargin:'-62% 0px -34% 0px'});
+    steps.forEach(function(s){ io.observe(s); });
+  }
+  // Zvýraznění: odkaz v seznamu a bod na mapě patří k sobě
+  function hl(slug,on){ map.querySelectorAll('[data-p="'+slug+'"]').forEach(function(el){ el.classList.toggle('hl',on); }); }
+  map.querySelectorAll('[data-p]').forEach(function(el){
+    var slug=el.getAttribute('data-p');
+    el.addEventListener('mouseenter',function(){ hl(slug,true); }); el.addEventListener('mouseleave',function(){ hl(slug,false); });
+    el.addEventListener('focus',function(){ hl(slug,true); }); el.addEventListener('blur',function(){ hl(slug,false); });
+  });
+});

@@ -604,6 +604,55 @@ a,button,summary,label{touch-action:manipulation}
 }
 @media (prefers-reduced-motion:reduce){.cap-detail:not([hidden]){animation:none}}
 
+/* ===== Mapa plaveb (Destinace): mapa zůstává na místě, při posouvání se přibližuje k oblastem ===== */
+.vmap{display:grid;grid-template-columns:minmax(0,8fr) minmax(0,4fr);gap:clamp(32px,5vw,80px)}
+.vmap-stage{position:sticky;top:110px;height:calc(100vh - 150px);max-height:760px;align-self:start}
+.vmap-svg{display:block;width:100%;height:100%;overflow:hidden;--u:1}
+.pm-grat{fill:none;stroke:var(--line);stroke-width:calc(var(--u)*.7px)}
+.pm-land{fill:var(--brass-light);fill-opacity:.2;stroke:var(--brass);stroke-opacity:.55;stroke-width:calc(var(--u)*.8px);stroke-linejoin:round}
+.pm-route{fill:none;stroke:var(--brass);stroke-width:calc(var(--u)*1.6px);stroke-linecap:round;stroke-dasharray:1 1;stroke-dashoffset:1;transition:stroke-dashoffset 1.8s var(--ease) .35s}
+.pm-route.on{stroke-dashoffset:0}
+.pm-route.off{transition:none}
+.pm-home circle{fill:var(--brass-text);transform:scale(var(--u))}
+.pm-home{opacity:0;transition:opacity .4s}
+.pm-home.on{opacity:1}
+.pm-pin > g{transform:scale(var(--u))}
+.pm-pin circle{fill:var(--midnight);stroke:var(--white);stroke-width:1.6;transition:fill .2s}
+.pm-pin text{font-family:var(--sans);font-size:13px;font-weight:500;letter-spacing:.02em;fill:var(--ink);stroke:var(--white);stroke-width:4px;stroke-linejoin:round;paint-order:stroke;opacity:0;transition:opacity .4s}
+.pm-pin.l text{text-anchor:end}
+.pm-pin.t text,.pm-pin.b text{text-anchor:middle}
+.pm-pin{transition:opacity .4s}
+.vmap.zoomed .pm-pin{opacity:.25;pointer-events:none}
+.vmap.zoomed .pm-pin.on{opacity:1;pointer-events:auto}
+.pm-pin.on text{opacity:1}
+.pm-pin:hover circle,.pm-pin.hl circle,.pm-pin:focus-visible circle{fill:var(--brass)}
+.pm-pin.hl text,.pm-pin:hover text{fill:var(--brass-text)}
+.vmap-step{min-height:78vh;display:flex;flex-direction:column;justify-content:center;opacity:.3;transition:opacity .5s var(--ease)}
+.vmap-step:first-child{min-height:62vh}
+.vmap-steps{padding-top:30vh}
+.vmap-step.on{opacity:1}
+.vmap-step h3{font-size:clamp(34px,3.4vw,52px)}
+.vmap-step h3 a{text-decoration:none}
+.vmap-step p{margin-top:14px;color:var(--stone);max-width:420px}
+.vmap-step .line-link{margin-top:28px;align-self:flex-start}
+.vmap-list{margin:22px 0 0;padding:0;list-style:none;border-bottom:1px solid var(--line);max-width:420px}
+.vmap-list li{border-top:1px solid var(--line)}
+.vmap-list a{display:flex;justify-content:space-between;align-items:center;padding:11px 0;text-decoration:none;font-weight:500;transition:color .2s}
+.vmap-list a::after{content:"";width:18px;height:9px;background:currentColor;opacity:.5;-webkit-mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 10'%3E%3Cpath d='M0 5h20M16 1l4 4-4 4' fill='none' stroke='black' stroke-width='1.4'/%3E%3C/svg%3E") no-repeat center/contain;mask:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 22 10'%3E%3Cpath d='M0 5h20M16 1l4 4-4 4' fill='none' stroke='black' stroke-width='1.4'/%3E%3C/svg%3E") no-repeat center/contain;transition:transform .3s var(--ease)}
+.vmap-list a:hover,.vmap-list a.hl{color:var(--brass-text)}
+.vmap-list a:hover::after,.vmap-list a.hl::after{transform:translateX(4px);opacity:1}
+@media (max-width:900px){
+  .vmap{display:block}
+  .vmap-steps{padding-top:0}
+  .vmap-stage{top:72px;z-index:2;height:44vh;height:44svh;max-height:none;margin-inline:-1.5rem;background:var(--white);border-bottom:1px solid var(--line)}
+  .vmap-step,.vmap-step:first-child{min-height:0;padding:clamp(40px,9vh,72px) 0;opacity:1;justify-content:flex-start}
+  .vmap-step + .vmap-step{border-top:1px solid var(--line)}
+  .vmap-step:last-child{padding-bottom:0}
+  .vmap-step h3{font-size:clamp(30px,8vw,40px)}
+  .pm-pin text{font-size:12px}
+}
+@media (prefers-reduced-motion:reduce){.pm-route{transition:none}.vmap-step{transition:none}}
+
 /* ===== Náš příběh ===== */
 /* Úvodní linka 1974 až 2008 */
 .origin-lead{font-family:var(--serif);font-size:clamp(24px,min(3vw,4.8vh),40px);line-height:1.3;max-width:26ch;margin:0 auto;text-align:center}
