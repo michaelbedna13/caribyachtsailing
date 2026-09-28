@@ -407,7 +407,8 @@ document.querySelectorAll('[data-vmap]').forEach(function(map){
   function hl(slug,on){ map.querySelectorAll('[data-p="'+slug+'"]').forEach(function(el){ el.classList.toggle('hl',on); }); }
   map.querySelectorAll('[data-p]').forEach(function(el){
     var slug=el.getAttribute('data-p');
-    el.addEventListener('mouseenter',function(){ hl(slug,true); }); el.addEventListener('mouseleave',function(){ hl(slug,false); });
+    // Bod pod myší dopředu, aby jeho popisek nepřekryly sousední body
+    el.addEventListener('mouseenter',function(){ if(el.classList.contains('pm-pin')) el.parentNode.appendChild(el); hl(slug,true); }); el.addEventListener('mouseleave',function(){ hl(slug,false); });
     el.addEventListener('focus',function(){ hl(slug,true); }); el.addEventListener('blur',function(){ hl(slug,false); });
   });
 });
